@@ -83,7 +83,7 @@
     if (finished) {
       label = "五步都看完了";
       if (doneTitle) doneTitle.textContent = "你已经看完入院五步";
-      if (doneLead) doneLead.textContent = "接下来可以出示沟通卡片，或查看住院须知。文字、卡片和呼叫铃就够用。";
+      if (doneLead) doneLead.textContent = "接下来可以出示沟通卡片，或到住院须知核对用药和病区。文字、卡片和呼叫铃就够用。";
     } else {
       label = "第 " + currentNumber + " 步，共 " + steps.length + " 步：" + titleOf(steps[state.index]);
     }
