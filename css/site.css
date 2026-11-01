@@ -96,6 +96,10 @@ a:hover { text-decoration-thickness: 3px; }
   margin-inline: auto;
 }
 
+.wrap-wide {
+  width: min(980px, calc(100% - 32px));
+}
+
 .site-header {
   background: var(--surface);
   border-bottom: 2px solid var(--line);
@@ -339,6 +343,15 @@ button, input, summary { font: inherit; color: inherit; }
   margin: 12px 0 0;
 }
 
+.roadmap-steps,
+.step-jump {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.roadmap-steps li,
+.step-jump li { display: flex; }
+
 .roadmap a, .toc a, .step-jump button {
   min-height: 48px;
   display: inline-flex;
@@ -353,6 +366,14 @@ button, input, summary { font: inherit; color: inherit; }
   font-weight: 800;
   text-decoration: none;
   cursor: pointer;
+}
+
+.roadmap-steps a,
+.step-jump button {
+  width: 100%;
+  border-radius: 14px;
+  justify-content: flex-start;
+  min-height: 56px;
 }
 
 .roadmap a:hover, .toc a:hover, .step-jump button:hover { background: var(--mint); }
@@ -438,7 +459,7 @@ button, input, summary { font: inherit; color: inherit; }
   margin-bottom: 8px;
 }
 
-.eyebrow { margin: 0; font-weight: 800; color: var(--pine-deep); }
+.step-kicker .eyebrow { margin: 0; }
 
 .action-bar {
   position: sticky;
@@ -455,6 +476,167 @@ button, input, summary { font: inherit; color: inherit; }
   grid-template-columns: 1fr 1.3fr 1fr;
   gap: 8px;
 }
+
+.bar-label {
+  margin: 0 0 8px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.page-intro { margin-bottom: 8px; }
+
+.eyebrow { margin: 0 0 6px; font-weight: 800; color: var(--pine-deep); }
+
+.intro-actions,
+.help-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.intro-actions .btn { flex: 1 1 220px; }
+
+.fact-row,
+.service-grid {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  margin: 12px 0 16px;
+}
+
+#urgent { scroll-margin-top: 220px; }
+
+.fact,
+.service-card {
+  background: #fff;
+  border: 2px solid var(--pine);
+  border-radius: 16px;
+  color: var(--ink);
+}
+
+.fact { padding: 14px 16px; }
+
+.fact strong,
+.service-title {
+  display: block;
+  font-size: 1.28rem;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.service-grid li { display: flex; }
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+  min-height: 104px;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.service-card:hover { background: var(--mint); }
+
+.service-kicker {
+  font-weight: 800;
+  color: var(--pine-deep);
+  font-size: 0.95rem;
+}
+
+.service-desc { font-weight: 600; }
+
+.help-strip {
+  background: var(--pine);
+  color: #f4faf7;
+  border-radius: var(--radius);
+  padding: 18px 16px;
+  margin: 8px 0 16px;
+}
+
+.help-strip h2,
+.help-strip p { color: #f4faf7; }
+
+.help-strip a:not(.btn) { color: #fff; font-weight: 800; }
+
+.help-strip .btn {
+  background: #fff;
+  color: var(--pine-deep);
+  border-color: #fff;
+}
+
+.help-strip .btn:hover { background: var(--mint); }
+
+.help-strip .btn-urgent {
+  background: #fff6f3;
+  color: #6e2418;
+  border-color: #fff;
+}
+
+.help-strip .btn-urgent:hover { background: #ffe4db; }
+
+.confirm-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+
+.confirm-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 2px solid var(--line);
+}
+
+.confirm-list .num { flex: 0 0 auto; margin-top: 2px; }
+
+.prep {
+  margin-top: 16px;
+  padding: 14px;
+  border: 2px dashed var(--pine);
+  border-radius: 16px;
+  background: #fbfcfa;
+}
+
+.filter-bar {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background: var(--bg);
+  padding: 10px 0 12px;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.chip-row button {
+  min-height: 48px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 2px solid var(--pine);
+  background: #fff;
+  color: var(--pine-deep);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.chip-row button:hover { background: var(--mint); }
+
+.chip-row button[aria-pressed="true"] {
+  background: var(--pine);
+  color: #fff;
+}
+
+.chip-row button[aria-pressed="true"]:hover { background: var(--pine-deep); }
 
 .phrase-list {
   list-style: none;
@@ -610,6 +792,40 @@ html.wizard-ready:not(.show-all) #wizard h2 {
 @media (min-width: 720px) {
   .phrase-list { grid-template-columns: 1fr 1fr; }
   .phrase.is-wide, .phrase.is-urgent { grid-column: 1 / -1; }
+  .fact-row { grid-template-columns: repeat(3, 1fr); }
+  .service-grid { grid-template-columns: 1fr 1fr; }
+  .service-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 899px) {
+  .step-jump {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+
+  .step-jump li { flex: 0 0 auto; }
+
+  .step-jump button {
+    width: auto;
+    border-radius: 999px;
+    min-height: 48px;
+  }
+}
+
+@media (min-width: 900px) {
+  .roadmap-steps,
+  .step-jump { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+  .step-jump button {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    min-height: 92px;
+    padding: 10px 8px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -617,6 +833,8 @@ html.wizard-ready:not(.show-all) #wizard h2 {
   #got-it { grid-column: 1 / -1; order: -1; }
   .cta { align-items: flex-start; }
   .topic-head, .ai-hero { flex-direction: column; }
+  .intro-actions { flex-direction: column; }
+  .intro-actions .btn { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -625,13 +843,15 @@ html.wizard-ready:not(.show-all) #wizard h2 {
 
 @media (prefers-contrast: more) {
   :root { --line: #143d32; --bg: #fff; }
-  .card, .phrase, .topic, .cta, .btn { border-width: 3px; }
+  .card, .phrase, .topic, .cta, .btn, .service-card, .fact, .help-strip { border-width: 3px; }
 }
 
 @media (forced-colors: active) {
-  .btn, .cta, .phrase, .card, .topic, .nav-row a, .step-jump button {
+  .btn, .cta, .phrase, .card, .topic, .nav-row a, .step-jump button, .service-card, .chip-row button, .help-strip {
     border: 1px solid ButtonText;
   }
+  .help-strip { background: Canvas; color: CanvasText; }
+  .help-strip h2, .help-strip p, .help-strip a { color: CanvasText; }
 }
 
 @media print {

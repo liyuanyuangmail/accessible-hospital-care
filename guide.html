@@ -46,10 +46,17 @@ try {
 </header>
 <main id="main" class="page">
   <div class="wrap">
-    <h1>入院指引</h1>
-    <p class="lead">一共五步。看懂一步，再走下一步。可以不听声音。</p>
-    <p>点「我看懂了」会记下来，并进入下一步。点「下一步」只翻页。点「上一步」可以返回。</p>
-    <p>手语讲解即将推出。现在请阅读文字。<a href="ai-sign/">查看手语预留页</a></p>
+    <header class="page-intro">
+      <p class="eyebrow">文字指引 · 不用听声音</p>
+      <h1>入院指引</h1>
+      <p class="lead">一共五步。看懂一步，再走下一步。</p>
+      <p>点「我看懂了」会记下来，并进入下一步。点「下一步」只翻页。点「上一步」可以返回。</p>
+      <div class="intro-actions">
+        <a class="btn btn-primary" href="#step-1">从第 1 步挂号开始</a>
+        <a class="btn" href="phrases.html">先准备沟通卡片</a>
+      </div>
+      <p>手语讲解即将推出。现在请阅读文字。<a href="ai-sign/">查看手语预留页</a></p>
+    </header>
     <noscript>
       <p class="note">按钮脚本没有运行。请按顺序阅读下面五步，用每一步末尾的链接前进或返回。</p>
     </noscript>
@@ -86,13 +93,29 @@ try {
           <p class="eyebrow">第 1 步，共 5 步</p>
         </div>
         <h2 tabindex="-1">挂号</h2>
+        <div id="dept-banner" class="callout" hidden>
+          <span class="label" id="dept-banner-label">你选的科室</span>
+          <span id="dept-banner-text"></span>
+        </div>
         <p>到医院后，第一件事是挂号。可以到挂号窗口，也可以用医院自己的手机程序。</p>
-        <p>请带上这些东西：</p>
-        <ul class="plain-list">
-          <li>身份证</li>
-          <li>医保卡（有就带上）</li>
-          <li>以前的病历或检查单（有就带上）</li>
-        </ul>
+        <p>窗口通常会看三样东西。有就带上，没有也不要慌，请对方写下一步。</p>
+        <ol class="confirm-list">
+          <li><span class="num" aria-hidden="true">1</span><span><strong>身份。</strong>身份证。</span></li>
+          <li><span class="num" aria-hidden="true">2</span><span><strong>医保。</strong>医保卡，有就带上。</span></li>
+          <li><span class="num" aria-hidden="true">3</span><span><strong>以前的资料。</strong>病历或检查单，有就带上。</span></li>
+        </ol>
+        <form id="prep-form" class="prep" autocomplete="off">
+          <p class="eyebrow">到窗口前，可以先写好</p>
+          <p>这些字只留在这台设备上，不会上传。公用设备用完请清空。不填也可以继续下一步。</p>
+          <label for="prep-dept">我要去的科室</label>
+          <input id="prep-dept" type="text" maxlength="40" placeholder="例如 内科" autocomplete="off">
+          <label for="prep-reason">哪里不舒服（短句）</label>
+          <input id="prep-reason" type="text" maxlength="80" placeholder="例如 头疼两天" autocomplete="off">
+          <label for="prep-when">如果已经约了时间</label>
+          <input id="prep-when" type="text" maxlength="40" placeholder="例如 今天上午" autocomplete="off">
+          <p id="prep-preview" class="callout" aria-live="polite">我听不见。请用文字告诉我。</p>
+          <p class="prep-actions"><button type="button" class="btn" id="prep-clear">清空这些字</button></p>
+        </form>
         <div class="callout">
           <span class="label">可以出示这句话</span>
           我听不见。请写字，或打字告诉我。
@@ -162,14 +185,15 @@ try {
         </div>
         <h2 tabindex="-1">办理住院</h2>
         <p>医生说需要住院以后，去住院处办理。有的医院叫「出入院办理」。</p>
-        <p>请带上：</p>
-        <ul class="plain-list">
-          <li>身份证</li>
-          <li>医保卡</li>
-          <li>银行卡，或医院要求的押金</li>
-        </ul>
-        <p>工作人员会核对三件事：你的名字、紧急联系人、药物过敏。</p>
-        <p>联系人最好是会打字的家人，或者会和你用手语沟通的人。电话要写清楚。</p>
+        <p>请带上身份证、医保卡，以及银行卡或医院要求的押金。</p>
+        <p>办理时请当场核对下面四件事。看不清，就请对方写在纸上，你看懂再点头。</p>
+        <ol class="confirm-list">
+          <li><span class="num" aria-hidden="true">1</span><span><strong>名字。</strong>住院证和腕带上的名字是不是你。</span></li>
+          <li><span class="num" aria-hidden="true">2</span><span><strong>紧急联系人。</strong>最好是会打字，或会和你用手语沟通的人。电话写清楚。</span></li>
+          <li><span class="num" aria-hidden="true">3</span><span><strong>过敏。</strong>药物或食物，请写在单据上。</span></li>
+          <li><span class="num" aria-hidden="true">4</span><span><strong>床号。</strong>看纸上的字。不要只靠听。</span></li>
+        </ol>
+        <p>如果要交押金或刷医保，请让对方把金额写下来。看不懂数字，先不要确认。</p>
         <p>办好以后，你通常会拿到：</p>
         <ol class="steps-ol">
           <li>住院证或腕带</li>
@@ -235,13 +259,24 @@ try {
         <p class="step-move"><a href="#step-1">回到第 1 步：挂号</a></p>
       </section>
     </div>
+    <aside class="help-strip" aria-labelledby="guide-help-title">
+      <h2 id="guide-help-title">需要帮忙</h2>
+      <p>看不懂就停在这一步。把卡片举给工作人员，请对方写下来。</p>
+      <div class="help-actions">
+        <a class="btn btn-urgent" href="phrases.html#urgent">出示紧急卡片</a>
+        <a class="btn" href="phrases.html">打开沟通求助</a>
+      </div>
+    </aside>
     <p class="note">各医院的窗口名称、检查项目和时间表不一样。请以你这次拿到的单据，和病区墙上的说明为准。本页帮你看懂流程，不能代替医生的诊断。</p>
   </div>
-  <div id="action-bar" class="action-bar" role="group" aria-label="步骤操作" hidden>
-    <div class="wrap action-row">
-      <button type="button" class="btn" id="prev">上一步</button>
-      <button type="button" class="btn btn-primary" id="got-it">我看懂了</button>
-      <button type="button" class="btn" id="next">下一步</button>
+  <div id="action-bar" class="action-bar" hidden>
+    <div class="wrap">
+      <p id="bar-label" class="bar-label">第 1 步 · 挂号</p>
+      <div class="action-row" role="group" aria-label="步骤操作">
+        <button type="button" class="btn" id="prev">上一步</button>
+        <button type="button" class="btn btn-primary" id="got-it">我看懂了</button>
+        <button type="button" class="btn" id="next">下一步</button>
+      </div>
     </div>
   </div>
 </main>
