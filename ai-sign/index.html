@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#143d32">
+<meta name="description" content="手语指引即将推出。当前版本只有文字，没有手语识别，也没有手语视频。">
+<title>手语指引（即将推出）· 即时可知</title>
+<link rel="canonical" href="https://liyuanyuangmail.github.io/accessible-hospital-care/ai-sign/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/site.css">
+<script>
+try {
+  var ahcFont = localStorage.getItem("ahc-font");
+  if (ahcFont === "lg" || ahcFont === "xl") document.documentElement.setAttribute("data-font", ahcFont);
+} catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap header-bar">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark" aria-hidden="true">知</span>
+      <span class="brand-text">
+        <span class="brand-name">即时可知</span>
+        <span class="brand-sub">听障入院关怀</span>
+      </span>
+    </a>
+    <div class="font-switch" role="group" aria-label="字号">
+      <span class="font-label">字号</span>
+      <button type="button" data-font-size="md" aria-pressed="true">标准</button>
+      <button type="button" data-font-size="lg" aria-pressed="false">大</button>
+      <button type="button" data-font-size="xl" aria-pressed="false">特大</button>
+    </div>
+  </div>
+  <nav class="site-nav" aria-label="主导航">
+    <div class="wrap nav-row">
+      <a href="../index.html">首页</a>
+      <a href="../guide.html">入院指引</a>
+      <a href="../phrases.html">沟通求助</a>
+      <a href="../care.html">住院须知</a>
+      <a href="../ai-sign/" aria-current="page">手语指引<span class="nav-badge">即将推出</span></a>
+    </div>
+  </nav>
+</header>
+<main id="main" class="page">
+  <div class="wrap">
+    <section class="card ai-hero" id="ai-sign-language" data-module="ai-sign-language" data-status="coming-soon" aria-labelledby="ai-title">
+      <div>
+        <p class="pill">即将推出</p>
+        <h1 id="ai-title">手语指引</h1>
+        <p class="lead">这里将在下一阶段加入人工智能手语讲解。入院的每一步，除了文字，还会用手语再讲一遍。</p>
+        <p><strong>现在还不能用手语。</strong>这个页面没有摄像头，没有手语识别，也没有手语视频。</p>
+        <p>请先使用文字版入院指引和沟通卡片。</p>
+        <div class="cta-list">
+          <a class="cta cta-primary" href="../guide.html">
+            <span class="cta-text">
+              <span class="cta-title">去看文字版入院指引</span>
+              <span class="cta-desc">挂号到病区，一步一步看</span>
+            </span>
+            <span class="cta-go">进入</span>
+          </a>
+          <a class="cta" href="../phrases.html">
+            <span class="cta-text">
+              <span class="cta-title">去沟通求助</span>
+              <span class="cta-desc">把句子出示给医护人员</span>
+            </span>
+            <span class="cta-go">进入</span>
+          </a>
+        </div>
+        <details class="dev-note">
+          <summary>给后续接入的模块说明</summary>
+          <p>患者可见的状态是「即将推出」。挂载点是本页的 <code>#ai-sign-language</code>。</p>
+          <p>入院步骤预留了 <code>data-ai-sign-slot</code>：<code>register</code>、<code>triage</code>、<code>exam</code>、<code>admit</code>、<code>ward</code>。引导页脚本会写入 <code>window.AccessibleHospitalCare.admissionGuide</code>。</p>
+          <p>本页脚本写入 <code>window.AccessibleHospitalCare.aiSignLanguage</code>，<code>status</code> 为 <code>coming-soon</code>。<code>mount()</code> 只返回这个区域，不加载模型。</p>
+        </details>
+      </div>
+    </section>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>看不懂就停下来，请对方写下来。没有听清，不是你的错。</p>
+    <p>本站是入院指引原型，不能代替医生诊断和医院的正式通知。</p>
+    <p class="fine-print"><a href="../resume.html">维护者简历</a></p>
+  </div>
+</footer>
+<script src="../js/site.js"></script>
+<script src="../js/ai-hook.js"></script>
+</body>
+</html>

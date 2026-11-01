@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#143d32">
+<meta name="description" content="入院五步：挂号、分诊、检查、办理住院、病区须知。每一步都有文字说明，不需要听声音。">
+<title>入院指引 · 即时可知</title>
+<link rel="canonical" href="https://liyuanyuangmail.github.io/accessible-hospital-care/guide.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+<script>
+try {
+  var ahcFont = localStorage.getItem("ahc-font");
+  if (ahcFont === "lg" || ahcFont === "xl") document.documentElement.setAttribute("data-font", ahcFont);
+} catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap header-bar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">知</span>
+      <span class="brand-text">
+        <span class="brand-name">即时可知</span>
+        <span class="brand-sub">听障入院关怀</span>
+      </span>
+    </a>
+    <div class="font-switch" role="group" aria-label="字号">
+      <span class="font-label">字号</span>
+      <button type="button" data-font-size="md" aria-pressed="true">标准</button>
+      <button type="button" data-font-size="lg" aria-pressed="false">大</button>
+      <button type="button" data-font-size="xl" aria-pressed="false">特大</button>
+    </div>
+  </div>
+  <nav class="site-nav" aria-label="主导航">
+    <div class="wrap nav-row">
+      <a href="index.html">首页</a>
+      <a href="guide.html" aria-current="page">入院指引</a>
+      <a href="phrases.html">沟通求助</a>
+      <a href="care.html">住院须知</a>
+      <a href="ai-sign/">手语指引<span class="nav-badge">即将推出</span></a>
+    </div>
+  </nav>
+</header>
+<main id="main" class="page">
+  <div class="wrap">
+    <h1>入院指引</h1>
+    <p class="lead">一共五步。看懂一步，再走下一步。可以不听声音。</p>
+    <p>点「我看懂了」会记下来，并进入下一步。点「下一步」只翻页。点「上一步」可以返回。</p>
+    <p>手语讲解即将推出。现在请阅读文字。<a href="ai-sign/">查看手语预留页</a></p>
+    <noscript>
+      <p class="note">按钮脚本没有运行。请按顺序阅读下面五步，用每一步末尾的链接前进或返回。</p>
+    </noscript>
+
+    <!--
+      AI sign-language slots (not active):
+      data-ai-sign-slot = register | triage | exam | admit | ward
+      Future runtime can mount into these steps.
+      Hook on this page: window.AccessibleHospitalCare.admissionGuide
+      Stub page: /ai-sign/  #ai-sign-language
+    -->
+    <div id="wizard" data-module="admission-guide">
+      <div class="card">
+        <p id="progress-label" class="progress-label">第 1 步，共 5 步：挂号</p>
+        <div id="progress" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" aria-labelledby="progress-label">
+          <div class="track" aria-hidden="true"><div id="progress-fill"></div></div>
+        </div>
+        <p id="understood-status" class="status" hidden>这一步你已标记为看懂。</p>
+        <ol class="step-jump" role="list">
+          <li role="listitem"><button type="button" data-goto="1" data-name="1 挂号" aria-current="step"><span class="num" aria-hidden="true">1</span>挂号<span class="tick" aria-hidden="true"></span></button></li>
+          <li role="listitem"><button type="button" data-goto="2" data-name="2 分诊"><span class="num" aria-hidden="true">2</span>分诊<span class="tick" aria-hidden="true"></span></button></li>
+          <li role="listitem"><button type="button" data-goto="3" data-name="3 检查"><span class="num" aria-hidden="true">3</span>检查<span class="tick" aria-hidden="true"></span></button></li>
+          <li role="listitem"><button type="button" data-goto="4" data-name="4 办理住院"><span class="num" aria-hidden="true">4</span>办理住院<span class="tick" aria-hidden="true"></span></button></li>
+          <li role="listitem"><button type="button" data-goto="5" data-name="5 病区须知"><span class="num" aria-hidden="true">5</span>病区须知<span class="tick" aria-hidden="true"></span></button></li>
+        </ol>
+        <p><button type="button" class="btn" id="show-all" aria-pressed="false">一次看完全部步骤</button></p>
+      </div>
+
+      <article class="card step is-active" id="step-1" data-step="1" data-step-title="挂号" data-ai-sign-slot="register">
+        <div class="step-kicker">
+          <span class="icon-bubble" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M8 16h32v7a5 5 0 0 0 0 10v7H8v-7a5 5 0 0 0 0-10z"/><path d="M20 16v24"/></svg>
+          </span>
+          <p class="eyebrow">第 1 步，共 5 步</p>
+        </div>
+        <h2 tabindex="-1">挂号</h2>
+        <p>到医院后，第一件事是挂号。可以到挂号窗口，也可以用医院自己的手机程序。</p>
+        <p>请带上这些东西：</p>
+        <ul class="plain-list">
+          <li>身份证</li>
+          <li>医保卡（有就带上）</li>
+          <li>以前的病历或检查单（有就带上）</li>
+        </ul>
+        <div class="callout">
+          <span class="label">可以出示这句话</span>
+          我听不见。请写字，或打字告诉我。
+        </div>
+        <p>办好以后，请看清两件事：</p>
+        <ol class="steps-ol">
+          <li>去哪个科室</li>
+          <li>你的号码是多少</li>
+        </ol>
+        <p>挂号单拿在手里。不要只等广播。下一步去这个科室的分诊台。</p>
+        <p><a href="phrases.html">打开沟通求助，出示更多句子</a></p>
+        <p class="step-move"><a href="#step-2">下一步：分诊</a></p>
+      </article>
+
+      <article class="card step" id="step-2" data-step="2" data-step-title="分诊" data-ai-sign-slot="triage">
+        <div class="step-kicker">
+          <span class="icon-bubble" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="16" cy="14" r="4"/><path d="M8 32c1.2-7 14-7 16 0"/><path d="M28 18h12v14H28z"/><path d="M31 23h6M31 28h6"/></svg>
+          </span>
+          <p class="eyebrow">第 2 步，共 5 步</p>
+        </div>
+        <h2 tabindex="-1">分诊</h2>
+        <p>到了科室门口，先找分诊台。那里通常有护士。</p>
+        <p>把挂号单递过去。护士可能要知道：</p>
+        <ul class="plain-list">
+          <li>哪里不舒服</li>
+          <li>疼不疼</li>
+          <li>从什么时候开始</li>
+        </ul>
+        <p>你可以出示沟通卡片，也可以用纸笔，或用手机打字。</p>
+        <div class="caution">
+          <span class="label">请注意</span>
+          请经常看叫号屏幕。屏幕上会出现号码或名字。听不到广播没有关系，以屏幕为准。
+        </div>
+        <p>如果号码已经过了，再把挂号单给分诊护士，请对方写下一步。</p>
+        <p class="step-move"><a href="#step-1">上一步：挂号</a> · <a href="#step-3">下一步：检查</a></p>
+      </article>
+
+      <article class="card step" id="step-3" data-step="3" data-step-title="检查" data-ai-sign-slot="exam">
+        <div class="step-kicker">
+          <span class="icon-bubble" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="12" y="8" width="24" height="32" rx="3"/><path d="M20 8V6h8v2"/><path d="M18 20h12M18 26h12M18 32h8"/></svg>
+          </span>
+          <p class="eyebrow">第 3 步，共 5 步</p>
+        </div>
+        <h2 tabindex="-1">检查</h2>
+        <p>医生看过以后，可能会让你去做检查。常见的有：抽血、验尿、拍片、心电图、超声。</p>
+        <p>请先看检查单上的地点。找不到路，就把检查单和这句话一起给工作人员看：</p>
+        <div class="callout">
+          <span class="label">可以出示这句话</span>
+          请带我去这个检查的地方。
+        </div>
+        <p>如果对方只用嘴说、没有文字，请先停一下。</p>
+        <div class="caution">
+          <span class="label">请注意</span>
+          有的检查要空腹，或要取下金属物品。这些要求写在单子上。看不懂，就不要开始，先让对方写清楚。
+        </div>
+        <p class="step-move"><a href="#step-2">上一步：分诊</a> · <a href="#step-4">下一步：办理住院</a></p>
+      </article>
+
+      <article class="card step" id="step-4" data-step="4" data-step-title="办理住院" data-ai-sign-slot="admit">
+        <div class="step-kicker">
+          <span class="icon-bubble" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="6" y="14" width="36" height="22" rx="3"/><circle cx="18" cy="25" r="4"/><path d="M26 22h12M26 28h8"/></svg>
+          </span>
+          <p class="eyebrow">第 4 步，共 5 步</p>
+        </div>
+        <h2 tabindex="-1">办理住院</h2>
+        <p>医生说需要住院以后，去住院处办理。有的医院叫「出入院办理」。</p>
+        <p>请带上：</p>
+        <ul class="plain-list">
+          <li>身份证</li>
+          <li>医保卡</li>
+          <li>银行卡，或医院要求的押金</li>
+        </ul>
+        <p>工作人员会核对三件事：你的名字、紧急联系人、药物过敏。</p>
+        <p>联系人最好是会打字的家人，或者会和你用手语沟通的人。电话要写清楚。</p>
+        <p>办好以后，你通常会拿到：</p>
+        <ol class="steps-ol">
+          <li>住院证或腕带</li>
+          <li>病区、楼层和床号</li>
+        </ol>
+        <div class="caution">
+          <span class="label">请注意</span>
+          腕带用来确认你的身份。请戴在手腕上，不要摘掉。床号请看纸上的字，不要只靠听。
+        </div>
+        <p class="step-move"><a href="#step-3">上一步：检查</a> · <a href="#step-5">下一步：病区须知</a></p>
+      </article>
+
+      <article class="card step" id="step-5" data-step="5" data-step-title="病区须知" data-ai-sign-slot="ward">
+        <div class="step-kicker">
+          <span class="icon-bubble" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M8 34V20M8 34h32M40 34V24"/><path d="M8 26h18a8 8 0 0 1 8 8"/><circle cx="16" cy="18" r="3"/></svg>
+          </span>
+          <p class="eyebrow">第 5 步，共 5 步</p>
+        </div>
+        <h2 tabindex="-1">病区须知</h2>
+        <p>到了病区，先去护士站，把住院证给护士。护士会带你去床位。</p>
+        <p>请当场确认四件事：</p>
+        <ol class="steps-ol">
+          <li>床号是不是你的</li>
+          <li>呼叫按钮在哪里</li>
+          <li>卫生间在哪一边</li>
+          <li>今天的吃饭时间和探视时间</li>
+        </ol>
+        <p>呼叫按钮在床头或床栏上。按一下就行，不用出声。护士会到你床边。</p>
+        <div class="callout">
+          <span class="label">放在床头</span>
+          我听不见。请用文字和我沟通。
+        </div>
+        <p>换班以后，新护士可能还不知道。这张卡片会帮你说明。吃饭和探视时间，请看<a href="care.html">住院须知</a>，再向护士确认今天的时间表。</p>
+        <div class="caution">
+          <span class="label">请记住</span>
+          有不明白的，按呼叫铃。护士来了，请对方写下来。看不懂，就停在这一步。
+        </div>
+        <p class="step-move"><a href="#step-4">上一步：办理住院</a> · <a href="#done">看完以后</a></p>
+      </article>
+
+      <section class="card" id="done">
+        <h2 id="done-title" tabindex="-1">看完以后</h2>
+        <p id="done-lead">上面五步都看过以后，可以用下面两个页面继续。</p>
+        <div class="cta-list">
+          <a class="cta cta-primary" href="phrases.html">
+            <span class="cta-text">
+              <span class="cta-title">沟通求助</span>
+              <span class="cta-desc">办入院时，把句子出示给医护人员</span>
+            </span>
+            <span class="cta-go">进入</span>
+          </a>
+          <a class="cta" href="care.html">
+            <span class="cta-text">
+              <span class="cta-title">住院须知</span>
+              <span class="cta-desc">用药、呼叫铃、吃饭、探视</span>
+            </span>
+            <span class="cta-go">进入</span>
+          </a>
+        </div>
+        <p>你可以用自己的速度。文字、卡片和呼叫铃就够用。</p>
+        <p><button type="button" class="btn" id="restart">从挂号再看一遍</button></p>
+        <p class="step-move"><a href="#step-1">回到第 1 步：挂号</a></p>
+      </section>
+    </div>
+    <p class="note">各医院的窗口名称、检查项目和时间表不一样。请以你这次拿到的单据，和病区墙上的说明为准。本页帮你看懂流程，不能代替医生的诊断。</p>
+  </div>
+  <div id="action-bar" class="action-bar" role="group" aria-label="步骤操作" hidden>
+    <div class="wrap action-row">
+      <button type="button" class="btn" id="prev">上一步</button>
+      <button type="button" class="btn btn-primary" id="got-it">我看懂了</button>
+      <button type="button" class="btn" id="next">下一步</button>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>看不懂就停下来，请对方写下来。没有听清，不是你的错。</p>
+    <p>本站是入院指引原型，不能代替医生诊断和医院的正式通知。</p>
+    <p><a href="ai-sign/">手语指引即将推出</a></p>
+    <p class="fine-print"><a href="resume.html">维护者简历</a></p>
+  </div>
+</footer>
+<script src="js/site.js"></script>
+<script src="js/guide.js"></script>
+</body>
+</html>
