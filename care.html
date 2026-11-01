@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#143d32">
-<meta name="description" content="住院关爱护理要点：用药、呼叫护士、用餐和探视。全程文字说明，不需要听声音。">
+<meta name="description" content="住院照护路径：床位卡、用药核对、病区清单、写给护士、换班交代和给家属的短句。全程文字，草稿只留在这台设备上。">
 <title>住院须知 · 即时可知</title>
 <link rel="canonical" href="https://liyuanyuangmail.github.io/accessible-hospital-care/care.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -49,15 +49,50 @@ try {
     <header class="page-intro">
       <p class="eyebrow">住下以后 · 全程文字</p>
       <h1>住院须知</h1>
-      <p class="lead">先点你要看的一件事：用药、呼叫护士、用餐、探视，或床头说明。</p>
-      <p>时间是常见安排，各病区不一样。请以护士站和墙上的说明为准。</p>
+      <p class="lead">先点你要看的一件事。用药、病区和要说的话，都可以用文字完成。</p>
+      <p>勾选和草稿只留在这台设备上，不会上传。时间以护士站和墙上的说明为准。这里不能代替医嘱。</p>
     </header>
     <ul class="service-grid" aria-label="本页章节">
+      <li>
+        <a class="service-card" href="#bed-card">
+          <span class="service-kicker">先写上</span>
+          <span class="service-title">床位卡</span>
+          <span class="service-desc">床号、过敏、饮食，以及怎么和我沟通。</span>
+        </a>
+      </li>
       <li>
         <a class="service-card" href="#medicine">
           <span class="service-kicker">先核对</span>
           <span class="service-title">用药</span>
           <span class="service-desc">药袋上的名字，要和腕带一致。</span>
+        </a>
+      </li>
+      <li>
+        <a class="service-card" href="#ward-check">
+          <span class="service-kicker">到床边</span>
+          <span class="service-title">病区核对</span>
+          <span class="service-desc">床、呼叫铃、卫生间、吃饭、探视、夜里。</span>
+        </a>
+      </li>
+      <li>
+        <a class="service-card" href="#write-nurse">
+          <span class="service-kicker">写短句</span>
+          <span class="service-title">写给护士</span>
+          <span class="service-desc">出示大字，也可以留在这台设备上。</span>
+        </a>
+      </li>
+      <li>
+        <a class="service-card" href="#handover">
+          <span class="service-kicker">给下一班</span>
+          <span class="service-title">换班交代</span>
+          <span class="service-desc">未勾选的项目，请写给下一班。</span>
+        </a>
+      </li>
+      <li>
+        <a class="service-card" href="#family-note">
+          <span class="service-kicker">请打字</span>
+          <span class="service-title">给家属</span>
+          <span class="service-desc">只写今天想让家属知道的短句。</span>
         </a>
       </li>
       <li>
@@ -97,22 +132,234 @@ try {
       </li>
     </ul>
 
-    <section class="topic" id="medicine" aria-labelledby="medicine-title">
-      <div class="topic-head">
-        <span class="icon-bubble" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="16" y="6" width="16" height="8" rx="2"/><rect x="14" y="14" width="20" height="26" rx="3"/><path d="M19 24h10"/></svg>
-        </span>
-        <h2 id="medicine-title">用药</h2>
-      </div>
-      <p>吃药前，先看这三件事。对不上，先不要吃，按呼叫铃。</p>
-      <ol class="confirm-list">
-        <li><span class="num" aria-hidden="true">1</span><span><strong>名字。</strong>药袋上的名字，和腕带上的名字，是不是你。</span></li>
-        <li><span class="num" aria-hidden="true">2</span><span><strong>怎么吃。</strong>饭前还是饭后，以药袋上的字，或护士写给你的字为准。</span></li>
-        <li><span class="num" aria-hidden="true">3</span><span><strong>自己的药。</strong>先给护士看。不要自己偷偷吃。</span></li>
-      </ol>
-      <p>吃完不舒服，按呼叫铃，并出示卡片，例如「我现在很疼。」</p>
-      <p><a href="phrases.html">去沟通求助，出示核对药物的卡片</a></p>
+    <section class="card" id="today-status" aria-labelledby="status-title">
+      <h2 id="status-title">这台设备上的进度</h2>
+      <p>入院五步的「我看懂了」记在这次浏览里。下面的勾选记在这台设备上。</p>
+      <ul class="status-row" id="care-status-mount" aria-label="这台设备上的进度"></ul>
+      <p id="care-status-live" class="sr-only" aria-live="polite"></p>
     </section>
+
+    <section class="card" aria-labelledby="nurse-cue-title">
+      <h2 id="nurse-cue-title">给当班护士</h2>
+      <ul class="plain-list">
+        <li>请和患者一起看，不要只口头交代。</li>
+        <li>等患者看完，或请患者出示大字卡片。</li>
+        <li>换班时出示「换班交代」。未勾选的项目请写给下一班。</li>
+        <li>给家属只需要短句。请让家属打字回复，不要只打电话。</li>
+      </ul>
+    </section>
+
+    <div id="care-app">
+      <section class="topic" id="bed-card" aria-labelledby="bed-title">
+        <h2 id="bed-title">床位卡</h2>
+        <p>写下床号、过敏、饮食，以及你希望别人怎么和你沟通。换班时可以整张出示。</p>
+        <div class="field-grid">
+          <div>
+            <label for="care-bed">床号</label>
+            <input id="care-bed" type="text" maxlength="20" placeholder="例如 12 床" autocomplete="off">
+          </div>
+          <div>
+            <label for="care-allergy">过敏</label>
+            <input id="care-allergy" type="text" maxlength="40" placeholder="没有就留空，例如青霉素" autocomplete="off">
+          </div>
+        </div>
+        <label for="care-diet">饮食</label>
+        <select id="care-diet">
+          <option>还没确认，请护士写下来</option>
+          <option>普通饮食</option>
+          <option>糖尿病饮食</option>
+          <option>低盐</option>
+          <option>流食或半流食</option>
+        </select>
+        <label for="care-comm">请别人这样和我沟通</label>
+        <select id="care-comm">
+          <option>请用文字，写短句。</option>
+          <option>请打字，把屏幕转给我。</option>
+          <option>我可以看口型。请面对我，同时写下来。</option>
+        </select>
+        <p class="hint">不要写身份证号、家庭住址。电话请在<a href="phrases.html#group-fill">沟通求助</a>里单独出示，用完可以删掉。</p>
+        <h3>出示用的床位卡</h3>
+        <div id="bed-card-preview" class="bedside-card pre-card">我听不见。
+请用文字，写短句。
+床号：请和我一起看腕带
+过敏：请先问我，再给药
+饮食：还没确认，请护士写下来
+呼叫铃我可以自己按，不用出声。</div>
+        <button type="button" class="btn btn-primary" id="show-bed-card">出示床位卡</button>
+      </section>
+
+      <section class="topic" id="medicine" aria-labelledby="medicine-title">
+        <div class="topic-head">
+          <span class="icon-bubble" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="16" y="6" width="16" height="8" rx="2"/><rect x="14" y="14" width="20" height="26" rx="3"/><path d="M19 24h10"/></svg>
+          </span>
+          <h2 id="medicine-title">用药核对</h2>
+        </div>
+        <p>吃药前，先看这三件事。对不上，先不要吃，按呼叫铃。这里不判断剂量对不对。</p>
+        <ol class="confirm-list">
+          <li><span class="num" aria-hidden="true">1</span><span><strong>名字。</strong>药袋上的名字，和腕带上的名字，是不是你。</span></li>
+          <li><span class="num" aria-hidden="true">2</span><span><strong>怎么吃。</strong>饭前还是饭后，以药袋上的字，或护士写给你的字为准。</span></li>
+          <li><span class="num" aria-hidden="true">3</span><span><strong>自己的药。</strong>先给护士看。不要自己偷偷吃。</span></li>
+        </ol>
+        <ul class="check-list">
+          <li class="check-row">
+            <label>
+              <input type="checkbox" data-check="med-name" aria-describedby="cue-med-name">
+              <span class="check-title">吃药前核对名字和腕带</span>
+              <span class="check-state" aria-hidden="true">未勾选</span>
+            </label>
+            <p id="cue-med-name" class="check-cue">给护士：请让患者看药袋和腕带上的名字，再写「是」或「不是」。</p>
+          </li>
+          <li class="check-row">
+            <label>
+              <input type="checkbox" data-check="med-when" aria-describedby="cue-med-when">
+              <span class="check-title">问清饭前还是饭后</span>
+              <span class="check-state" aria-hidden="true">未勾选</span>
+            </label>
+            <p id="cue-med-when" class="check-cue">给护士：请写在纸上或打在手机上，不要只说一遍。</p>
+          </li>
+          <li class="check-row">
+            <label>
+              <input type="checkbox" data-check="med-allergy" aria-describedby="cue-med-allergy">
+              <span class="check-title">把过敏告诉护士</span>
+              <span class="check-state" aria-hidden="true">未勾选</span>
+            </label>
+            <p id="cue-med-allergy" class="check-cue">给护士：过敏还没写上时，先问，再给药。</p>
+          </li>
+          <li class="check-row">
+            <label>
+              <input type="checkbox" data-check="med-own" aria-describedby="cue-med-own">
+              <span class="check-title">自己带来的药已经给护士看过</span>
+              <span class="check-state" aria-hidden="true">未勾选</span>
+            </label>
+            <p id="cue-med-own" class="check-cue">给护士：自备药先看过再决定。请患者不要自己偷偷吃。</p>
+          </li>
+        </ul>
+        <h3>今天的药名</h3>
+        <p>只写药名和大概时间。剂量请看药袋，或请护士写下来。</p>
+        <label for="med-name">药名</label>
+        <input id="med-name" type="text" maxlength="40" placeholder="护士写给你的药名" autocomplete="off">
+        <label for="med-when">什么时候吃</label>
+        <select id="med-when">
+          <option>饭前</option>
+          <option selected>饭后</option>
+          <option>睡前</option>
+          <option>请护士写时间</option>
+        </select>
+        <div class="form-actions">
+          <button type="button" class="btn btn-primary" id="add-med">记在这台设备上</button>
+        </div>
+        <div id="med-list" class="mini-list">
+          <p class="hint">还没有记下药名。写上护士给你的药名，再出示核对。</p>
+        </div>
+        <p><a href="phrases.html#group-care">去沟通求助，出示核对药物的卡片</a></p>
+      </section>
+
+      <section class="topic" id="ward-check" aria-labelledby="ward-title">
+        <h2 id="ward-title">病区核对</h2>
+        <p>到床边后逐项确认。勾选只是提醒，不是护士站的记录。看不懂就停下来，请对方写。</p>
+        <ul class="check-list">
+          <li class="check-row">
+            <label>
+              <input type="checkbox" data-check="ward-bed" aria-describedby="cue-ward-bed">
+              <span class="check-title">床号是我的</span>
+              <span class="check-state" aria-hidden="true">未勾选</span>
+            </label>
+            <p id="cue-ward-bed" class="check-cue">给护士：和患者一起看床头卡和腕带，再写床号。</p>
+          </li>
+          <li class="check-row">
+            <label>
+              <input type="checkbox" data-check="ward-bell" aria-describedby="cue-ward-bell">
+              <span class="check-title">知道呼叫铃在哪，按一下就行</span>
+              <span class="check-state" aria-hidden="true">未勾选</span>
+            </label>
+            <p id="cue-ward-bell" class="check-cue">给护士：请患者自己按一次。不用出声。灯亮了再过来。</p>
+          </li>
+          <li class="check-row">
+            <label>
+              <input type="checkbox" data-check="ward-toilet" aria-describedby="cue-ward-toilet">
+              <span class="check-title">知道卫生间在哪一边</span>
+              <span class="check-state" aria-hidden="true">未勾选</span>
+            </label>
+            <p id="cue-ward-toilet" class="check-cue">给护士：用手指出方向，或画一个简单箭头。</p>
+          </li>
+          <li class="check-row">
+            <label>
+              <input type="checkbox" data-check="ward-meal" aria-describedby="cue-ward-meal">
+              <span class="check-title">今天的吃饭时间已经写下来</span>
+              <span class="check-state" aria-hidden="true">未勾选</span>
+            </label>
+            <p id="cue-ward-meal" class="check-cue">给护士：把本病区的早餐、午餐、晚餐时间写给患者。</p>
+          </li>
+          <li class="check-row">
+            <label>
+              <input type="checkbox" data-check="ward-visit" aria-describedby="cue-ward-visit">
+              <span class="check-title">探视时间已经写下来</span>
+              <span class="check-state" aria-hidden="true">未勾选</span>
+            </label>
+            <p id="cue-ward-visit" class="check-cue">给护士：写下开始和结束时间。不要只说「下午」。</p>
+          </li>
+          <li class="check-row">
+            <label>
+              <input type="checkbox" data-check="ward-night" aria-describedby="cue-ward-night">
+              <span class="check-title">知道夜里怎么叫护士</span>
+              <span class="check-state" aria-hidden="true">未勾选</span>
+            </label>
+            <p id="cue-ward-night" class="check-cue">给护士：说明夜里也是按铃，不用叫出声。换班时写上「请用文字」。</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="topic" id="write-nurse" aria-labelledby="write-title">
+        <h2 id="write-title">写给护士</h2>
+        <p>写短句。可以先出示，再留在这台设备上，换班时会带到交代卡里。</p>
+        <label for="note-draft">这句话</label>
+        <textarea id="note-draft" maxlength="120" placeholder="例如：我现在疼，在肚子这里。"></textarea>
+        <div class="form-actions">
+          <button type="button" class="btn btn-primary" id="show-note">出示给护士</button>
+          <button type="button" class="btn" id="add-note">留在这台设备上</button>
+        </div>
+        <div id="note-list" class="mini-list">
+          <p class="hint">还没有留下句子。</p>
+        </div>
+      </section>
+
+      <section class="topic" id="handover" aria-labelledby="handover-title">
+        <h2 id="handover-title">换班交代</h2>
+        <p>这张卡给下一班。上面有沟通方式、还没勾的项目，以及你最后写的一句。请护士看完再走。</p>
+        <div id="handover-preview" class="bedside-card pre-card">填写床位卡和核对项之后，这里会生成换班交代。没有脚本时，请把床号、过敏和「我听不见，请用文字」写在纸上交给下一班。</div>
+        <button type="button" class="btn btn-primary" id="show-handover">出示换班交代</button>
+      </section>
+
+      <section class="topic" id="family-note" aria-labelledby="family-title">
+        <h2 id="family-title">给家属的短句</h2>
+        <p>只写今天想让家属知道的事。不要写病历，也不要写身份证号。请家属打字回复你。</p>
+        <label for="care-feeling">我现在</label>
+        <select id="care-feeling">
+          <option value="">请选择</option>
+          <option>还好</option>
+          <option>不舒服</option>
+          <option>这里疼</option>
+          <option>想休息</option>
+          <option>想让家属来</option>
+        </select>
+        <label for="care-family-ask">想说的话</label>
+        <textarea id="care-family-ask" maxlength="120" placeholder="例如：请晚上来，并把医生的话打字给我。"></textarea>
+        <h3>出示给家属</h3>
+        <div id="family-preview" class="bedside-card pre-card">给家属。请用文字看，不要只打电话。
+床号：还没写
+我现在：还没选
+今天还没写想说的话。请用文字问我。
+请打字回复我。</div>
+        <button type="button" class="btn btn-primary" id="show-family">出示给家属</button>
+      </section>
+
+      <details class="note" id="clear-drafts">
+        <summary>清除这台设备上的草稿</summary>
+        <p>会删掉床号、过敏、勾选、药名、写下的句子，以及沟通页里的电话。不会删掉这次浏览里入院五步的「我看懂了」。</p>
+        <button type="button" class="btn" id="clear-care">确定清除</button>
+      </details>
+    </div>
 
     <section class="topic" id="call" aria-labelledby="call-title">
       <div class="topic-head">
@@ -142,15 +389,14 @@ try {
         </span>
         <h2 id="meal-title">用餐</h2>
       </div>
-      <p>很多医院大约是这些时间。以本病区的时间表为准。</p>
+      <p>很多医院大约是这些时间。以本病区写给你的时间表为准。看不清，就不要猜，请护士写下来，再勾选上面的「吃饭时间」。</p>
       <ul class="plain-list">
         <li>早餐：大约 7:00 前后</li>
         <li>午餐：大约 11:30 前后</li>
         <li>晚餐：大约 17:30 前后</li>
       </ul>
-      <p>时间表看不清，请护士写给你。</p>
-      <p>有糖尿病饮食、低盐、流食或其他治疗饮食，要提前说明。可以在<a href="phrases.html">沟通求助</a>里出示「我有特殊饮食」。</p>
-      <p>吃不下不要勉强。剩下的留在餐盘里，告诉护士，不要自己倒掉。</p>
+      <p>有糖尿病饮食、低盐、流食或其他治疗饮食，写在<a href="#bed-card">床位卡</a>上，并在<a href="phrases.html">沟通求助</a>里出示「我有特殊饮食」。</p>
+      <p>吃不下不要勉强。剩下的留在餐盘里，写给护士，不要自己倒掉。</p>
     </section>
 
     <section class="topic" id="visit" aria-labelledby="visit-title">
@@ -160,17 +406,18 @@ try {
         </span>
         <h2 id="visit-title">探视</h2>
       </div>
-      <p>许多病区的探视时间在下午到晚上，常见是 15:00 到 20:00。以护士站公示为准。</p>
+      <p>许多病区的探视时间在下午到晚上，常见是 15:00 到 20:00。以护士写给你的时间为准。</p>
       <ul class="plain-list">
-        <li>请探视的人把医生的话写下来给你，不要只靠说话。</li>
-        <li>你可以请家属当你的文字翻译：他们听医生说，再写给你看。</li>
+        <li>请探视的人把医生的话打字给你，不要只靠说话。</li>
+        <li>你可以请家属当你的文字翻译：他们看医生写的字，或把听到的话打成字。</li>
+        <li>想让家属知道今天的情况，用上面的<a href="#family-note">给家属的短句</a>。</li>
         <li>休息时间请让病房保持安静。你可能听不见噪声，但身体需要休息。</li>
       </ul>
     </section>
 
     <section class="topic" id="bedside" aria-labelledby="bedside-title" data-card="我听不见。请用文字和我沟通。请写短句子。呼叫铃我可以自己按，不需要出声。">
       <h2 id="bedside-title">可以放在床头的说明</h2>
-      <p>把这段话给每一班护士看，或点下面的按钮把屏幕转过去。</p>
+      <p>每一班护士来了，都可以先看这张短卡。写了床号和过敏之后，用<a href="#bed-card">床位卡</a>那一张。</p>
       <div class="bedside-card">
         <p class="huge">我听不见</p>
         <p>请用文字和我沟通。请写短句子。</p>
@@ -187,7 +434,7 @@ try {
         <a class="btn" href="phrases.html">打开沟通求助</a>
       </div>
     </aside>
-    <p class="note">入院那天，护士会和你一起确认床位、呼叫铃和当天安排。你可以用自己的速度看。没有听清，不是你的错。</p>
+    <p class="note">入院那天的五步在<a href="guide.html">入院指引</a>。护士会和你一起确认床位、呼叫铃和当天安排。没有听清，不是你的错。手语讲解<a href="ai-sign/">即将推出</a>，现在请用文字。</p>
   </div>
 </main>
 <footer class="site-footer">
@@ -211,5 +458,6 @@ try {
 </dialog>
 <script src="js/site.js"></script>
 <script src="js/show-card.js"></script>
+<script src="js/care.js"></script>
 </body>
 </html>

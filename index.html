@@ -53,6 +53,7 @@ try {
       <div class="intro-actions">
         <a class="btn btn-primary" href="guide.html">开始入院指引</a>
         <a class="btn" href="phrases.html">先看沟通卡片</a>
+        <a class="btn" href="care.html">住院以后的核对</a>
       </div>
       <ul class="fact-row">
         <li class="fact"><strong>五步都是文字</strong>挂号、分诊、检查、办理住院、病区。</li>
@@ -168,10 +169,23 @@ try {
           <a class="service-card" href="care.html">
             <span class="service-kicker">住下以后</span>
             <span class="service-title">住院须知</span>
-            <span class="service-desc">用药、呼叫铃、吃饭、探视。都是文字。</span>
+            <span class="service-desc">床位卡、用药核对、换班交代。都是文字。</span>
           </a>
         </li>
       </ul>
+    </section>
+
+    <section class="card" aria-labelledby="stay-title">
+      <p class="eyebrow">住下以后</p>
+      <h2 id="stay-title">核对与书面沟通</h2>
+      <p>四条照护路径，都用文字。勾选和草稿只留在这台设备上。</p>
+      <ol class="steps-ol">
+        <li><a href="care.html#bed-card">床位卡</a>：床号、过敏、饮食、怎么和我沟通。</li>
+        <li><a href="care.html#medicine">用药核对</a>：药名和饭前饭后，出示给护士。</li>
+        <li><a href="care.html#ward-check">病区核对</a>：床、呼叫铃、卫生间、吃饭、探视、夜里。</li>
+        <li><a href="care.html#write-nurse">书面沟通</a>：写给护士、换班交代、给家属的短句。</li>
+      </ol>
+      <ul class="status-row" id="care-status-mount" aria-label="这台设备上的进度"></ul>
     </section>
 
     <section class="card" aria-labelledby="how-title">
@@ -180,7 +194,7 @@ try {
         <li>点「开始入院指引」，或先点你所在的窗口。</li>
         <li>看完一步，点「我看懂了」，再进入下一步。</li>
         <li>需要和医护沟通时，打开「沟通求助」，把卡片出示给对方。</li>
-        <li>住下以后，打开「住院须知」。</li>
+        <li>住下以后，打开「住院须知」，核对用药和病区，把要说的话写下来。</li>
       </ol>
       <p>字可以调大。页首有「标准 / 大 / 特大」。用手指点，或用键盘的 Tab 和 Enter。</p>
     </section>
@@ -192,7 +206,7 @@ try {
         <li>把屏幕转给患者，或让患者自己点。</li>
         <li>等患者点「我看懂了」，再进入下一步。</li>
         <li>床号、时间、禁食、下一步去哪，请同时写下来。</li>
-        <li>换班时告诉下一班：请用文字和这位患者沟通。</li>
+        <li>换班时打开<a href="care.html#handover">换班交代</a>，把卡片给下一班。请用文字和这位患者沟通。</li>
       </ul>
     </section>
 
@@ -222,5 +236,6 @@ try {
   </div>
 </footer>
 <script src="js/site.js"></script>
+<script src="js/care.js"></script>
 </body>
 </html>

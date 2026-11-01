@@ -50,7 +50,7 @@ try {
       <p class="eyebrow">把屏幕转给对方 · 可以不说话</p>
       <h1>沟通求助</h1>
       <p class="lead">点「出示这张卡片」，字会变得很大。先找你要的那一句，再出示。</p>
-      <p>你填写的过敏和电话只显示在这台设备上，不会上传。</p>
+      <p>过敏和电话只留在这台设备上，不会上传。过敏会同步到住院须知的床位卡。电话不会写进换班交代。</p>
     </header>
     <div class="note">
       <p><span class="pill">即将推出</span></p>
@@ -68,6 +68,7 @@ try {
         <button type="button" data-filter="body">身体情况</button>
         <button type="button" data-filter="daily">生活需要</button>
         <button type="button" data-filter="care">检查和用药</button>
+        <button type="button" data-filter="shift">换班家属</button>
         <button type="button" data-filter="fill">自己填写</button>
       </div>
       <p id="phrase-count" class="hint" aria-live="polite"></p>
@@ -205,6 +206,40 @@ try {
           <h3>我有特殊饮食。请看我的病历，并写下来。</h3>
           <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
         </li>
+        <li class="phrase" role="listitem" data-card="这是饭前吃，还是饭后吃？请写下来。">
+          <h3>这是饭前吃，还是饭后吃？请写下来。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="请写下药的名字，和今天还要吃几次。">
+          <h3>请写下药的名字，和今天还要吃几次。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="这是我自己带来的药。请先看，再告诉我能不能吃。">
+          <h3>这是我自己带来的药。请先看，再告诉我能不能吃。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="group-shift" data-group="shift">
+      <h2 id="group-shift">换班和家属</h2>
+      <ul class="phrase-list" role="list">
+        <li class="phrase" role="listitem" data-card="请把这句话写进交班：我听不见，请用文字和我沟通。">
+          <h3>请把这句话写进交班：我听不见，请用文字和我沟通。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="请把今天还没做完的事写给下一班。">
+          <h3>请把今天还没做完的事写给下一班。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="请用文字告诉我，家属需要知道什么。">
+          <h3>请用文字告诉我，家属需要知道什么。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="请让家属打字给我，不要只在电话里说。">
+          <h3>请让家属打字给我，不要只在电话里说。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
       </ul>
     </section>
 
@@ -215,17 +250,22 @@ try {
           <h3>过敏</h3>
           <label for="allergy-input">过敏的药物或食物</label>
           <input id="allergy-input" data-fill type="text" placeholder="写在这里，例如青霉素" autocomplete="off">
-          <p class="hint">可以留空。留空时，卡片会请医护先问清楚。</p>
+          <p class="hint">可以留空。留空时，卡片会请医护先问清楚。写上以后，住院须知的床位卡会用同一句过敏。</p>
           <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
         </li>
         <li class="phrase is-wide" role="listitem" data-card="请联系我的家属。电话：____" data-card-empty="请联系我的家属。请把纸给我，我来写电话。">
           <h3>家属电话</h3>
           <label for="phone-input">家属电话</label>
           <input id="phone-input" data-fill type="tel" inputmode="tel" placeholder="写在这里" autocomplete="off">
-          <p class="hint">这是公用设备的话，用完请把电话删掉。</p>
+          <p class="hint">这是公用设备的话，用完请把电话删掉。电话不会进入换班交代。</p>
           <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
         </li>
       </ul>
+      <div class="form-actions">
+        <button type="button" class="btn" id="clear-phone">只清除电话</button>
+        <button type="button" class="btn" id="clear-fills">清除过敏和电话</button>
+      </div>
+      <p id="fill-status" class="sr-only" aria-live="polite"></p>
     </section>
 
     <aside class="help-strip" aria-labelledby="phrase-help-title">
