@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#143d32">
+<meta name="description" content="把常用句子出示给医生和护士。字会变得很大。可以不说话。">
+<title>沟通求助 · 即时可知</title>
+<link rel="canonical" href="https://liyuanyuangmail.github.io/accessible-hospital-care/phrases.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+<script>
+try {
+  var ahcFont = localStorage.getItem("ahc-font");
+  if (ahcFont === "lg" || ahcFont === "xl") document.documentElement.setAttribute("data-font", ahcFont);
+} catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap header-bar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">知</span>
+      <span class="brand-text">
+        <span class="brand-name">即时可知</span>
+        <span class="brand-sub">听障入院关怀</span>
+      </span>
+    </a>
+    <div class="font-switch" role="group" aria-label="字号">
+      <span class="font-label">字号</span>
+      <button type="button" data-font-size="md" aria-pressed="true">标准</button>
+      <button type="button" data-font-size="lg" aria-pressed="false">大</button>
+      <button type="button" data-font-size="xl" aria-pressed="false">特大</button>
+    </div>
+  </div>
+  <nav class="site-nav" aria-label="主导航">
+    <div class="wrap nav-row">
+      <a href="index.html">首页</a>
+      <a href="guide.html">入院指引</a>
+      <a href="phrases.html" aria-current="page">沟通求助</a>
+      <a href="care.html">住院须知</a>
+      <a href="ai-sign/">手语指引<span class="nav-badge">即将推出</span></a>
+    </div>
+  </nav>
+</header>
+<main id="main" class="page">
+  <div class="wrap">
+    <h1>沟通求助</h1>
+    <p class="lead">点「出示这张卡片」，把屏幕转给医生或护士。字会变得很大。</p>
+    <p>可以不说话。你填写的过敏和电话只显示在这台设备上，不会上传。</p>
+    <div class="note">
+      <p><span class="pill">即将推出</span></p>
+      <p>手语讲解还没做好。同一句话，以后会在手语页再用手语讲一遍。现在请用这些文字卡片。<a href="ai-sign/">了解手语指引</a></p>
+    </div>
+
+    <section aria-labelledby="group-talk">
+      <h2 id="group-talk">怎么和我沟通</h2>
+      <ul class="phrase-list" role="list">
+        <li class="phrase" role="listitem" data-card="我听不见。请用文字和我沟通。">
+          <h3>我听不见。请用文字和我沟通。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="我听得很少。请写字，并面对我。">
+          <h3>我听得很少。请写字，并面对我。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="请写下来，句子短一点。">
+          <h3>请写下来，句子短一点。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="请打在手机上，把屏幕转给我。">
+          <h3>请打在手机上，把屏幕转给我。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="我可以看口型。请面对我，慢一点，不要挡住嘴巴。">
+          <h3>我可以看口型。请面对我，慢一点，不要挡住嘴巴。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="我没看懂。请再写一遍。">
+          <h3>我没看懂。请再写一遍。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="我看懂了。谢谢。">
+          <h3>我看懂了。谢谢。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="请给我纸和笔。">
+          <h3>请给我纸和笔。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="group-body">
+      <h2 id="group-body">身体情况</h2>
+      <ul class="phrase-list" role="list">
+        <li class="phrase is-urgent" role="listitem" data-urgent="true" data-card="我需要马上帮助。">
+          <p class="urgent-label">紧急</p>
+          <h3>我需要马上帮助。</h3>
+          <button type="button" class="btn btn-urgent" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase is-urgent" role="listitem" data-urgent="true" data-card="我喘不上气。">
+          <p class="urgent-label">紧急</p>
+          <h3>我喘不上气。</h3>
+          <button type="button" class="btn btn-urgent" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="我现在很疼。">
+          <h3>我现在很疼。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="疼在这里。请看我手指的地方。">
+          <h3>疼在这里。请看我手指的地方。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="我头晕。">
+          <h3>我头晕。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="我想吐。">
+          <h3>我想吐。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="group-daily">
+      <h2 id="group-daily">生活需要</h2>
+      <ul class="phrase-list" role="list">
+        <li class="phrase" role="listitem" data-card="我要去卫生间。">
+          <h3>我要去卫生间。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="我口渴，需要喝水。">
+          <h3>我口渴，需要喝水。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="我饿了。">
+          <h3>我饿了。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="我冷。">
+          <h3>我冷。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="我热。">
+          <h3>我热。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="请帮我叫护士。">
+          <h3>请帮我叫护士。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="group-care">
+      <h2 id="group-care">检查、吃药、住院</h2>
+      <ul class="phrase-list" role="list">
+        <li class="phrase" role="listitem" data-card="请告诉我下一步去哪里。">
+          <h3>请告诉我下一步去哪里。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="请带我去检查的地方。请看我的检查单。">
+          <h3>请带我去检查的地方。请看我的检查单。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="请等我看完说明，再开始。">
+          <h3>请等我看完说明，再开始。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="请核对是不是我的药，再给我吃。">
+          <h3>请核对是不是我的药，再给我吃。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="这个检查要空腹吗？请写下来。">
+          <h3>这个检查要空腹吗？请写下来。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="请让医生把结论写给我。">
+          <h3>请让医生把结论写给我。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase" role="listitem" data-card="我有特殊饮食。请看我的病历，并写下来。">
+          <h3>我有特殊饮食。请看我的病历，并写下来。</h3>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="group-fill">
+      <h2 id="group-fill">写上你的情况再出示</h2>
+      <ul class="phrase-list" role="list">
+        <li class="phrase is-wide" role="listitem" data-card="我对____过敏。请先确认，再给我药。" data-card-empty="我有过敏史。请写下来让我确认，再给我药。">
+          <h3>过敏</h3>
+          <label for="allergy-input">过敏的药物或食物</label>
+          <input id="allergy-input" data-fill type="text" placeholder="写在这里，例如青霉素" autocomplete="off">
+          <p class="hint">可以留空。留空时，卡片会请医护先问清楚。</p>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+        <li class="phrase is-wide" role="listitem" data-card="请联系我的家属。电话：____" data-card-empty="请联系我的家属。请把纸给我，我来写电话。">
+          <h3>家属电话</h3>
+          <label for="phone-input">家属电话</label>
+          <input id="phone-input" data-fill type="tel" inputmode="tel" placeholder="写在这里" autocomplete="off">
+          <p class="hint">这是公用设备的话，用完请把电话删掉。</p>
+          <button type="button" class="btn btn-primary" data-show>出示这张卡片</button>
+        </li>
+      </ul>
+    </section>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>看不懂就停下来，请对方写下来。没有听清，不是你的错。</p>
+    <p>本站是入院指引原型，不能代替医生诊断和医院的正式通知。</p>
+    <p><a href="ai-sign/">手语指引即将推出</a></p>
+    <p class="fine-print"><a href="resume.html">维护者简历</a></p>
+  </div>
+</footer>
+<dialog id="show-dialog" aria-labelledby="show-text">
+  <div class="sheet">
+    <p id="show-urgent" class="urgent-label" hidden>紧急，请马上处理</p>
+    <p id="show-text"></p>
+    <div class="dialog-actions">
+      <button type="button" class="btn btn-primary" data-close>关闭</button>
+      <button type="button" class="btn" id="copy-phrase">复制文字</button>
+    </div>
+    <p id="copy-status" class="sr-only" aria-live="polite"></p>
+  </div>
+</dialog>
+<script src="js/site.js"></script>
+<script src="js/show-card.js"></script>
+</body>
+</html>

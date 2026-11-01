@@ -1,561 +1,139 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>李媛媛 · 简历</title>
-<style>
-  :root {
-    --bg: #f4f6f9;
-    --card: #ffffff;
-    --ink: #1f2937;
-    --muted: #5b6472;
-    --line: #e5e9f0;
-    --accent: #1a5f8a;
-    --accent-soft: #e8f2f8;
-    --accent-dark: #0f3d5c;
-    --chip: #f0f5f9;
-    --radius: 14px;
-    --shadow: 0 10px 30px rgba(15, 61, 92, 0.08);
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
-      "Noto Sans SC", "Source Han Sans SC", system-ui, -apple-system, sans-serif;
-    color: var(--ink);
-    background:
-      radial-gradient(1200px 600px at 10% -10%, #d7ebf7 0%, transparent 55%),
-      radial-gradient(900px 500px at 100% 0%, #e8f0f7 0%, transparent 50%),
-      var(--bg);
-    line-height: 1.65;
-    font-size: 15px;
-    -webkit-font-smoothing: antialiased;
-  }
-  .page {
-    max-width: 920px;
-    margin: 28px auto 48px;
-    padding: 0 16px;
-  }
-  .card {
-    background: var(--card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    border: 1px solid rgba(26, 95, 138, 0.08);
-  }
-  header.hero {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 28px;
-    padding: 32px 36px 28px;
-    background: linear-gradient(135deg, #0f3d5c 0%, #1a5f8a 55%, #2a7aa8 100%);
-    color: #fff;
-    position: relative;
-  }
-  header.hero::after {
-    content: "";
-    position: absolute;
-    inset: auto 0 0 0;
-    height: 4px;
-    background: linear-gradient(90deg, #7dd3fc, #38bdf8, #bae6fd);
-  }
-  .avatar {
-    width: 118px;
-    height: 158px;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 3px solid rgba(255,255,255,0.85);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.22);
-    background: #fff;
-  }
-  .hero-main h1 {
-    margin: 0 0 6px;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-  }
-  .tagline {
-    margin: 0 0 14px;
-    opacity: 0.92;
-    font-size: 0.98rem;
-  }
-  .meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 18px;
-    font-size: 0.92rem;
-  }
-  .meta span {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    opacity: 0.95;
-  }
-  .meta a { color: #fff; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.45); }
-  .meta a:hover { border-bottom-color: #fff; }
-  .body { padding: 8px 36px 36px; }
-  section {
-    margin-top: 26px;
-    break-inside: avoid;
-  }
-  .sec-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 0 14px;
-    font-size: 1.12rem;
-    color: var(--accent-dark);
-    font-weight: 700;
-    letter-spacing: 0.04em;
-  }
-  .sec-title::before {
-    content: "";
-    width: 5px;
-    height: 1.05em;
-    border-radius: 3px;
-    background: linear-gradient(180deg, var(--accent), #38bdf8);
-  }
-  .sec-title::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, var(--line), transparent);
-    margin-left: 4px;
-  }
-  .edu-item, .item {
-    padding: 12px 14px;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    background: #fbfcfe;
-    margin-bottom: 10px;
-  }
-  .edu-item .row, .item .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 6px 16px;
-    align-items: baseline;
-  }
-  .edu-item .school, .item .title {
-    font-weight: 650;
-    color: var(--ink);
-  }
-  .edu-item .degree, .item .sub {
-    color: var(--accent);
-    font-weight: 600;
-    font-size: 0.95rem;
-  }
-  .time {
-    color: var(--muted);
-    font-size: 0.9rem;
-    white-space: nowrap;
-  }
-  .chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 10px;
-  }
-  .chip {
-    background: var(--accent-soft);
-    color: var(--accent-dark);
-    border: 1px solid #d3e6f2;
-    border-radius: 999px;
-    padding: 3px 11px;
-    font-size: 0.82rem;
-  }
-  .note {
-    margin: 10px 0 0;
-    color: var(--muted);
-    font-size: 0.92rem;
-  }
-  ul.clean {
-    margin: 8px 0 0;
-    padding-left: 1.15em;
-  }
-  ul.clean li { margin: 4px 0; }
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .block {
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 12px 14px;
-    background: #fbfcfe;
-  }
-  .block h3 {
-    margin: 0 0 8px;
-    font-size: 0.98rem;
-    color: var(--accent);
-  }
-  .block p, .block ul { margin: 0; color: var(--ink); }
-  table.rotations {
-    width: 100%;
-    border-collapse: collapse;
-    overflow: hidden;
-    border-radius: 12px;
-    border: 1px solid var(--line);
-    font-size: 0.92rem;
-  }
-  table.rotations th,
-  table.rotations td {
-    padding: 11px 12px;
-    border-bottom: 1px solid var(--line);
-    vertical-align: top;
-    text-align: left;
-  }
-  table.rotations th {
-    background: var(--accent-soft);
-    color: var(--accent-dark);
-    font-weight: 650;
-    white-space: nowrap;
-  }
-  table.rotations tr:last-child td { border-bottom: none; }
-  table.rotations td.cat {
-    font-weight: 650;
-    color: var(--accent-dark);
-    white-space: nowrap;
-    width: 7.5em;
-    background: #f8fafc;
-  }
-  table.rotations td.depts {
-    width: 28%;
-    color: var(--muted);
-  }
-  .pub-list, .talk-list, .proj-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .pub-list li, .talk-list li, .proj-list li {
-    position: relative;
-    padding: 10px 12px 10px 14px;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    margin-bottom: 8px;
-    background: #fbfcfe;
-  }
-  .pub-list li::before,
-  .talk-list li::before,
-  .proj-list li::before {
-    content: "";
-    position: absolute;
-    left: 0; top: 12px; bottom: 12px;
-    width: 3px;
-    border-radius: 2px;
-    background: var(--accent);
-  }
-  .badge {
-    display: inline-block;
-    margin-left: 6px;
-    padding: 1px 8px;
-    border-radius: 999px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    vertical-align: middle;
-  }
-  .badge.ok { background: #dcfce7; color: #166534; }
-  .badge.wait { background: #fef3c7; color: #92400e; }
-  .badge.accept { background: #dbeafe; color: #1e40af; }
-  .badge.role { background: var(--accent-soft); color: var(--accent-dark); }
-  .footer-note {
-    margin-top: 22px;
-    text-align: center;
-    color: var(--muted);
-    font-size: 0.82rem;
-  }
-  @media (max-width: 720px) {
-    header.hero {
-      grid-template-columns: 1fr;
-      justify-items: start;
-      padding: 24px 20px 22px;
-      gap: 16px;
-    }
-    .avatar { width: 96px; height: 128px; }
-    .body { padding: 4px 18px 24px; }
-    .two-col { grid-template-columns: 1fr; }
-    table.rotations, table.rotations thead, table.rotations tbody,
-    table.rotations th, table.rotations td, table.rotations tr {
-      display: block;
-      width: 100%;
-    }
-    table.rotations thead { display: none; }
-    table.rotations tr {
-      border-bottom: 1px solid var(--line);
-      padding: 10px 0;
-    }
-    table.rotations tr:last-child { border-bottom: none; }
-    table.rotations td {
-      border: none;
-      padding: 4px 12px;
-      background: transparent !important;
-    }
-    table.rotations td.cat { padding-top: 10px; }
-    table.rotations td.depts::before { content: "轮转科室："; color: var(--muted); }
-    table.rotations td.skills::before { content: "专科技能："; color: var(--muted); display: block; }
-  }
-  @media print {
-    body {
-      background: #fff;
-      font-size: 11.5pt;
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-    }
-    .page { margin: 0; max-width: none; padding: 0; }
-    .card {
-      box-shadow: none;
-      border: none;
-      border-radius: 0;
-    }
-    header.hero {
-      padding: 18px 20px;
-      border-radius: 0;
-    }
-    .body { padding: 8px 20px 16px; }
-    section { margin-top: 14px; break-inside: avoid; }
-    .edu-item, .item, .block, .pub-list li, .talk-list li, .proj-list li {
-      break-inside: avoid;
-      box-shadow: none;
-    }
-    a { color: inherit; text-decoration: none; border: none; }
-    .footer-note { display: none; }
-  }
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#143d32">
+<meta name="description" content="给听障、聋人和重听患者的入院与住院指引。用文字、图示和沟通卡片办入院，不需要听声音。">
+<title>即时可知 · 听障患者入院关怀</title>
+<link rel="canonical" href="https://liyuanyuangmail.github.io/accessible-hospital-care/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+<script>
+try {
+  var ahcFont = localStorage.getItem("ahc-font");
+  if (ahcFont === "lg" || ahcFont === "xl") document.documentElement.setAttribute("data-font", ahcFont);
+} catch (e) {}
+</script>
 </head>
 <body>
-  <div class="page">
-    <article class="card">
-      <header class="hero">
-        <img class="avatar" src="data:image/jpeg;base64,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" alt="李媛媛证件照" width="118" height="158" />
-        <div class="hero-main">
-          <h1>李媛媛</h1>
-          <p class="tagline">求职方向：临床护理岗 · 川北医学院护理专业硕士研究生（专硕）</p>
-          <div class="meta">
-            <span>女 · 汉族 · 2001 年生 · 25 岁</span>
-            <span>籍贯：四川巴中</span>
-            <span>现居：四川成都</span>
-            <span>身高：168 cm</span>
-            <span>电话：<a href="tel:19198970196">19198970196</a></span>
-            <span>邮箱：<a href="mailto:19198970196@163.com">19198970196@163.com</a></span>
-          </div>
-        </div>
-      </header>
-
-      <div class="body">
-        <section>
-          <h2 class="sec-title">个人简介</h2>
-          <div class="block">
-            <p>李媛媛，女，汉族，2001 年生，四川巴中人，护士。2024 年本科毕业于川北医学院护理学专业，现为该校护理专业硕士研究生，预计 2027 年毕业，研究方向为循证护理与重症护理。曾在重症医学科、急诊科、心内科、心脏大血管外科等科室轮转，参与急危重症患者病情观察、生命体征监测、气道与管路护理、围术期护理及 PICC 维护，现正参加四川省重症专科护士培训。</p>
-          </div>
-        </section>
-
-        <section>
-          <h2 class="sec-title">教育背景</h2>
-          <div class="edu-item">
-            <div class="row">
-              <div>
-                <div class="school">川北医学院 / 护理学院</div>
-                <div class="degree">护理 / 专硕 · 方向：循证护理、重症护理</div>
-              </div>
-              <div class="time">2024.09 — 2027.05</div>
-            </div>
-            <p class="note">研究生在读期间培训：台湾循证护理培训班（已结业）；医学领域大语言模型与智能体构建培训班（已结业）。</p>
-          </div>
-          <div class="edu-item">
-            <div class="row">
-              <div>
-                <div class="school">川北医学院 / 护理学院</div>
-                <div class="degree">护理学 / 本科</div>
-              </div>
-              <div class="time">2020.09 — 2024.07</div>
-            </div>
-            <p class="note">主修课程：循证护理学、急危重症护理学、妇产科护理学、护理研究、高级护理实践、护理学导论、内科护理学、外科护理学、儿科护理学。</p>
-          </div>
-        </section>
-
-        <section>
-          <h2 class="sec-title">临床轮转经历</h2>
-          <table class="rotations">
-            <thead>
-              <tr>
-                <th>类别</th>
-                <th>轮转科室</th>
-                <th>专科技能</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="cat">重症护理</td>
-                <td class="depts">重症医学科、急诊科<br />（重症专科护士培训班在读）</td>
-                <td class="skills">参与急危重症患者护理，学习快速评估、生命体征监测、气道与管路管理及应急处置，具备较强的病情观察与临床应变意识。</td>
-              </tr>
-              <tr>
-                <td class="cat">妇产儿护理</td>
-                <td class="depts">产科、儿科</td>
-                <td class="skills">参与产科及儿科护理实践，熟悉母婴护理、儿童常见疾病护理、病情观察及专科健康教育，具备妇产儿专科护理基础。</td>
-              </tr>
-              <tr>
-                <td class="cat">外科护理</td>
-                <td class="depts">心脏大血管外科、神经外科</td>
-                <td class="skills">参与围手术期患者护理，熟悉术前准备、术后观察、引流管及切口护理、并发症风险识别与护理。</td>
-              </tr>
-              <tr>
-                <td class="cat">内科护理</td>
-                <td class="depts">心内科、消化内科</td>
-                <td class="skills">常见内科疾病护理及用药观察，参与 PICC 等血管通路维护与患者健康教育。</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-
-        <section>
-          <h2 class="sec-title">科研立项</h2>
-          <ul class="proj-list">
-            <li>
-              <strong>主持</strong>自贡市医学科学院患者安全研究中心 2025 年度重点项目：
-              「实施领导力、实施气候与组织变革准备度的关系研究」
-              <span class="badge role">主持</span>
-            </li>
-            <li>
-              <strong>参与</strong>同中心项目：
-              「基于循证的护士动脉血气采集标准知信行问卷编制及信效度检验」
-              <span class="badge role">参与</span>
-            </li>
-            <li>
-              参与四川省护理科研课题：
-              「社区老年人口腔衰弱风险预测模型的构建及风险管理策略的实证研究」
-            </li>
-            <li>
-              参与 2024 年四川省卫生健康委员会科技项目：
-              「老年 2 型糖尿病患者口腔衰弱风险预测模型的构建及风险管理干预对策的实证研究」
-            </li>
-            <li>
-              参与中华医学会杂志社 2025 年护理学科研究课题：
-              「基于机器学习的养老机构老年人口腔衰弱风险预测模型的构建与验证」
-            </li>
-            <li>
-              2026 年作为课题组成员参与四川省护理学会护理科研课题申报 / 立项
-            </li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 class="sec-title">论文发表</h2>
-          <ol class="pub-list" style="list-style:none;padding:0;counter-reset:pub;">
-            <li style="counter-increment:pub;">
-              <strong>《循证实践组织变革准备度相关测评工具的范围综述》</strong>
-              —《护理学报》已见刊
-              <span class="badge ok">已见刊</span>
-              <span class="badge role">第 1 作者</span>
-            </li>
-            <li>
-              <strong>《综合 ICU 护理交接班循证实践障碍和促进因素研究》</strong>
-              —《中华急危重症护理杂志》已见刊
-              <span class="badge ok">已见刊</span>
-              <span class="badge role">参与作者</span>
-            </li>
-            <li>
-              <strong>老年慢性心衰患者认知衰弱识别模型系统综述</strong>
-              —《Frontiers in Public Health》
-              <span class="badge role">参与发表</span>
-            </li>
-            <li>
-              <strong>老年住院患者跌倒风险感知偏差与预防跌倒行为研究</strong>
-              —《循证护理》已录用
-              <span class="badge accept">已录用</span>
-              <span class="badge role">参与撰写</span>
-            </li>
-            <li>
-              <strong>老年人群口腔衰弱干预策略的范围综述</strong>
-              —《护士进修杂志》已录用
-              <span class="badge accept">已录用</span>
-            </li>
-            <li>
-              <strong><em>Latent Profiles of Nurses' Perceived Implementation Leadership, Implementation Climate, and Evidence-Based Nursing Competence: A Multicentre Cross-Sectional Study</em></strong>
-              — <em>Nursing Open</em> 在投
-              <span class="badge wait">在投</span>
-              <span class="badge role">第 1 作者</span>
-            </li>
-            <li>
-              <strong><em>Joint profiles of emotional labour and burnout among nurses: a latent profile analysis</em></strong>
-              — <em>BMC Nursing</em> 在投
-              <span class="badge wait">在投</span>
-              <span class="badge role">第 2 作者</span>
-            </li>
-          </ol>
-        </section>
-
-        <section>
-          <h2 class="sec-title">学术交流</h2>
-          <ul class="talk-list">
-            <li>
-              《基于 CFIR 框架的 ICU 护理交接班循证实践障碍和促进因素分析》
-              — 2025 年护理专业研究生及导师科研和创新能力提升会议大会交流发言
-              <span class="badge role">第 1 作者</span>
-            </li>
-            <li>
-              《临床护士实施领导力、实施氛围与循证能力的潜在剖面分析及分型预测》
-              — 2026 年跨学科护理研究与融合发展学术研讨会大会发言
-              <span class="badge role">第 1 作者</span>
-            </li>
-            <li>
-              <em>Latent Profiles of Nurses' Perceived Implementation Leadership, Implementation Climate, and Evidence-Based Nursing Competence: A Multicentre Cross-Sectional Study</em>
-              — 2026 年护理科研与创新学术会议暨中华护理杂志社系列期刊编委工作会议
-              <span class="badge role">第 1 作者</span>
-            </li>
-            <li>
-              <em>Organizational Change Readiness Assessment Tools: Scoping Review and Dimensional</em>
-              — 2025 年亚洲实施科学会议快速口头汇报
-              <span class="badge role">第 1 作者</span>
-            </li>
-            <li>
-              《循证实践准备度相关测评工具的范围综述与测评维度分析》
-              — 2025 年护理科研与创新学术会议暨中华护理杂志社壁报交流
-              <span class="badge role">第 1 作者</span>
-            </li>
-          </ul>
-          <p class="note">此外曾在亚洲实施科学会议进行壁报展示及口头交流，并多次在中华护理学会、中华护理杂志社及四川省护理学会相关会议上作大会报告和壁报交流。</p>
-        </section>
-
-        <section>
-          <h2 class="sec-title">荣誉与能力</h2>
-          <div class="two-col">
-            <div class="block">
-              <h3>本科阶段</h3>
-              <ul class="clean">
-                <li><strong>成绩：</strong>在校期间成绩排名前 10%</li>
-                <li><strong>荣誉：</strong>学业奖学金、校长奖学金、优秀学生、优秀学生干部、优秀志愿者、校级优秀毕业生</li>
-                <li><strong>语言：</strong>英语四级、普通话证书；胜任日常英文文书阅读与文章撰写</li>
-                <li><strong>社会实践：</strong>参加社区义诊、科普健康知识宣传等志愿活动，具备较好的社会实践调研能力</li>
-              </ul>
-            </div>
-            <div class="block">
-              <h3>技能标签</h3>
-              <div class="chips">
-                <span class="chip">循证护理</span>
-                <span class="chip">重症护理</span>
-                <span class="chip">急危重症评估</span>
-                <span class="chip">气道与管路管理</span>
-                <span class="chip">PICC 维护</span>
-                <span class="chip">围术期护理</span>
-                <span class="chip">护理科研</span>
-                <span class="chip">范围综述</span>
-                <span class="chip">潜在剖面分析</span>
-                <span class="chip">学术交流</span>
-                <span class="chip">英语四级</span>
-                <span class="chip">普通话</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <p class="footer-note">本简历由个人材料整理生成 · 适合屏幕浏览与打印</p>
-      </div>
-    </article>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap header-bar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">知</span>
+      <span class="brand-text">
+        <span class="brand-name">即时可知</span>
+        <span class="brand-sub">听障入院关怀</span>
+      </span>
+    </a>
+    <div class="font-switch" role="group" aria-label="字号">
+      <span class="font-label">字号</span>
+      <button type="button" data-font-size="md" aria-pressed="true">标准</button>
+      <button type="button" data-font-size="lg" aria-pressed="false">大</button>
+      <button type="button" data-font-size="xl" aria-pressed="false">特大</button>
+    </div>
   </div>
+  <nav class="site-nav" aria-label="主导航">
+    <div class="wrap nav-row">
+      <a href="index.html" aria-current="page">首页</a>
+      <a href="guide.html">入院指引</a>
+      <a href="phrases.html">沟通求助</a>
+      <a href="care.html">住院须知</a>
+      <a href="ai-sign/">手语指引<span class="nav-badge">即将推出</span></a>
+    </div>
+  </nav>
+</header>
+<main id="main" class="page">
+  <div class="wrap">
+    <section class="card hero">
+      <h1>用文字看懂入院</h1>
+      <p class="lead">给听障、聋人和重听患者的入院与住院指引。陪同办理的护士也可以用来做文字引导。</p>
+      <p>全程使用文字、图示和可以出示的卡片。不需要听声音，也可以不说话。不用注册，打开就能用。</p>
+      <div class="cta-list">
+        <a class="cta cta-primary" href="guide.html">
+          <span class="icon-bubble" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14h28v20H10z"/><path d="M16 22h16M16 28h10"/></svg>
+          </span>
+          <span class="cta-text">
+            <span class="cta-title">开始入院指引</span>
+            <span class="cta-desc">挂号、分诊、检查、办理住院、病区须知</span>
+          </span>
+          <span class="cta-go">进入</span>
+        </a>
+        <a class="cta" href="phrases.html">
+          <span class="icon-bubble" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="10" width="32" height="22" rx="3"/><path d="M14 18h20M14 24h12"/><path d="M16 32l6-4h8"/></svg>
+          </span>
+          <span class="cta-text">
+            <span class="cta-title">沟通求助</span>
+            <span class="cta-desc">把句子出示给医生和护士，可以不说话</span>
+          </span>
+          <span class="cta-go">进入</span>
+        </a>
+        <a class="cta" href="care.html">
+          <span class="icon-bubble" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 40s-13-8-13-17a8 8 0 0 1 13-5 8 8 0 0 1 13 5c0 9-13 17-13 17z"/></svg>
+          </span>
+          <span class="cta-text">
+            <span class="cta-title">住院须知</span>
+            <span class="cta-desc">关爱护理：用药、呼叫铃、吃饭、探视</span>
+          </span>
+          <span class="cta-go">进入</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="path-title">
+      <h2 id="path-title">入院一共五步</h2>
+      <p>可以按顺序看，也可以先点开你现在正在做的那一步。</p>
+      <ol class="roadmap" role="list">
+        <li role="listitem"><a href="guide.html#step-1"><span class="num" aria-hidden="true">1</span>挂号</a></li>
+        <li role="listitem"><a href="guide.html#step-2"><span class="num" aria-hidden="true">2</span>分诊</a></li>
+        <li role="listitem"><a href="guide.html#step-3"><span class="num" aria-hidden="true">3</span>检查</a></li>
+        <li role="listitem"><a href="guide.html#step-4"><span class="num" aria-hidden="true">4</span>办理住院</a></li>
+        <li role="listitem"><a href="guide.html#step-5"><span class="num" aria-hidden="true">5</span>病区须知</a></li>
+      </ol>
+    </section>
+
+    <section class="card" aria-labelledby="how-title">
+      <h2 id="how-title">怎么用</h2>
+      <ol class="steps-ol">
+        <li>打开「开始入院指引」。</li>
+        <li>看完一步，点「我看懂了」，再进入下一步。</li>
+        <li>需要和医护沟通时，打开「沟通求助」，把卡片出示给对方。</li>
+        <li>住下以后，打开「住院须知」。</li>
+      </ol>
+      <p>字可以调大。页首有「标准 / 大 / 特大」。用手指点，或用键盘的 Tab 和 Enter。</p>
+    </section>
+
+    <section class="card" aria-labelledby="nurse-title">
+      <h2 id="nurse-title">给陪你办理的护士</h2>
+      <p>入院引导时，请用文字和患者一起看，不要只靠口头交代。</p>
+      <ul class="plain-list">
+        <li>把屏幕转给患者，或让患者自己点。</li>
+        <li>等患者点「我看懂了」，再进入下一步。</li>
+        <li>床号、时间、禁食、下一步去哪，请同时写下来。</li>
+        <li>换班时告诉下一班：请用文字和这位患者沟通。</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="sign-title">
+      <h2 id="sign-title">手语指引 <span class="pill">即将推出</span></h2>
+      <p>以后，每一步会加上人工智能手语讲解，把同一段话再用手语讲一遍。</p>
+      <p>现在还没有手语视频，也没有手语识别。请先使用文字指引和沟通卡片。</p>
+      <p><a class="btn" href="ai-sign/">查看手语指引预留页</a></p>
+    </section>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>看不懂就停下来，请对方写下来。没有听清，不是你的错。</p>
+    <p>本站是入院指引原型，不能代替医生诊断和医院的正式通知。</p>
+    <p><a href="ai-sign/">手语指引即将推出</a></p>
+    <p class="fine-print"><a href="resume.html">维护者简历</a></p>
+  </div>
+</footer>
+<script src="js/site.js"></script>
 </body>
 </html>
