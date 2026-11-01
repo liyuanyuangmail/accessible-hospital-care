@@ -16,12 +16,46 @@
   var doneLead = document.getElementById("done-lead");
   var status = document.getElementById("understood-status");
   var jumps = Array.prototype.slice.call(document.querySelectorAll("[data-goto]"));
+  var barLabel = document.getElementById("bar-label");
+  var deptBanner = document.getElementById("dept-banner");
+  var deptBannerLabel = document.getElementById("dept-banner-label");
+  var deptBannerText = document.getElementById("dept-banner-text");
+  var prepDept = document.getElementById("prep-dept");
+  var prepReason = document.getElementById("prep-reason");
+  var prepWhen = document.getElementById("prep-when");
+  var prepPreview = document.getElementById("prep-preview");
+  var prepClear = document.getElementById("prep-clear");
+
+  var chosenDept = null;
+  var depts = {
+    neike: {
+      name: "内科",
+      text: "入院仍是这五步。挂号以后，去内科分诊台。请看叫号屏幕，不要只等广播。"
+    },
+    waike: {
+      name: "外科",
+      text: "入院仍是这五步。挂号以后，去外科分诊台。请看叫号屏幕，不要只等广播。"
+    },
+    erke: {
+      name: "儿科",
+      text: "带孩子入院，仍是这五步。挂号以后，去儿科分诊台。请让工作人员把下一步写下来。"
+    },
+    guke: {
+      name: "骨科",
+      text: "入院仍是这五步。挂号以后，去骨科分诊台。行动不便时，请工作人员带路，不要只靠口头指路。"
+    },
+    jizhen: {
+      name: "急诊",
+      text: "急诊也先看屏幕和文字，不要只等广播。如果喘不上气，或需要马上帮助，先出示紧急卡片，再办手续。"
+    }
+  };
 
   if (!wizard || !done || !bar || !prev || !next || !got || !progress || steps.length === 0) {
     return;
   }
 
   document.documentElement.classList.add("js");
+  bindPrep();
 
   var storageKey = "ahc-understood";
   var understood = {};
@@ -39,6 +73,85 @@
     } catch (err) {
       /* Ignore quota or private-mode failures. */
     }
+  }
+
+  function cleanPrep(value) {
+    return String(value || "").replace(/\s+/g, " ").trim().slice(0, 80);
+  }
+
+  function readPrep() {
+    return {
+      dept: prepDept ? cleanPrep(prepDept.value) : "",
+      reason: prepReason ? cleanPrep(prepReason.value) : "",
+      when: prepWhen ? cleanPrep(prepWhen.value) : ""
+    };
+  }
+
+  function composePrep(data) {
+    var parts = ["我听不见。请用文字告诉我。"];
+    if (data.dept) parts.push("我要去：" + data.dept + "。");
+    if (data.reason) parts.push("不舒服：" + data.reason + "。");
+    if (data.when) parts.push("时间：" + data.when + "。");
+    return parts.join("");
+  }
+
+  function renderPrep() {
+    if (!prepPreview) return;
+    prepPreview.textContent = composePrep(readPrep());
+  }
+
+  function savePrep() {
+    try {
+      sessionStorage.setItem("ahc-prep", JSON.stringify(readPrep()));
+    } catch (err) {
+      /* The sentence still shows on this page. */
+    }
+  }
+
+  function bindPrep() {
+    if (!prepDept && !prepReason && !prepWhen) return;
+    var saved = {};
+    try {
+      saved = JSON.parse(sessionStorage.getItem("ahc-prep") || "{}") || {};
+    } catch (err) {
+      saved = {};
+    }
+    if (prepDept && saved.dept) prepDept.value = cleanPrep(saved.dept);
+    if (prepReason && saved.reason) prepReason.value = cleanPrep(saved.reason);
+    if (prepWhen && saved.when) prepWhen.value = cleanPrep(saved.when);
+
+    var params;
+    try {
+      params = new URLSearchParams(window.location.search);
+    } catch (err) {
+      params = null;
+    }
+    chosenDept = params ? depts[params.get("dept")] || null : null;
+    if (chosenDept && deptBanner && deptBannerLabel && deptBannerText) {
+      deptBanner.hidden = false;
+      deptBannerLabel.textContent = chosenDept.name;
+      deptBannerText.textContent = chosenDept.text;
+      if (prepDept && !cleanPrep(prepDept.value)) prepDept.value = chosenDept.name;
+    }
+
+    [prepDept, prepReason, prepWhen].forEach(function (field) {
+      if (!field) return;
+      field.addEventListener("input", function () {
+        renderPrep();
+        savePrep();
+      });
+    });
+    if (prepClear) {
+      prepClear.addEventListener("click", function () {
+        if (prepDept) prepDept.value = "";
+        if (prepReason) prepReason.value = "";
+        if (prepWhen) prepWhen.value = "";
+        renderPrep();
+        savePrep();
+        if (prepDept) prepDept.focus();
+      });
+    }
+    renderPrep();
   }
 
   function readLocation() {
@@ -80,14 +193,20 @@
     progress.setAttribute("aria-valuemax", String(steps.length));
 
     var label;
+    var deptSuffix = chosenDept ? " · " + chosenDept.name : "";
     if (finished) {
       label = "五步都看完了";
       if (doneTitle) doneTitle.textContent = "你已经看完入院五步";
       if (doneLead) doneLead.textContent = "接下来可以出示沟通卡片，或到住院须知核对用药和病区。文字、卡片和呼叫铃就够用。";
     } else {
-      label = "第 " + currentNumber + " 步，共 " + steps.length + " 步：" + titleOf(steps[state.index]);
+      label = "第 " + currentNumber + " 步，共 " + steps.length + " 步：" + titleOf(steps[state.index]) + deptSuffix;
     }
     if (progressLabel) progressLabel.textContent = label;
+    if (barLabel) {
+      barLabel.textContent = finished
+        ? "五步都看完了"
+        : "第 " + currentNumber + " 步 · " + titleOf(steps[state.index]) + deptSuffix;
+    }
     if (fill) fill.style.width = ((finished ? 1 : currentNumber / steps.length) * 100) + "%";
 
     jumps.forEach(function (btn) {

@@ -106,6 +106,62 @@
 
   dialog.addEventListener("close", resetCopy);
 
+  var search = document.getElementById("phrase-search");
+  var empty = document.getElementById("phrase-empty");
+  var countEl = document.getElementById("phrase-count");
+  var groups = Array.prototype.slice.call(document.querySelectorAll("[data-group]"));
+  var filterButtons = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
+  var activeFilter = "all";
+
+  function applyPhraseFilter() {
+    if (!groups.length) return;
+    var query = search ? search.value.replace(/\s+/g, " ").trim().toLowerCase() : "";
+    var shown = 0;
+    groups.forEach(function (section) {
+      var group = section.getAttribute("data-group");
+      var cards = section.querySelectorAll(".phrase");
+      var sectionShown = 0;
+      Array.prototype.forEach.call(cards, function (card) {
+        var text = (card.textContent || "").toLowerCase();
+        var groupOk = activeFilter === "all" || activeFilter === group;
+        var textOk = !query || text.indexOf(query) !== -1;
+        var visible = groupOk && textOk;
+        card.hidden = !visible;
+        if (visible) sectionShown += 1;
+      });
+      section.hidden = sectionShown === 0;
+      shown += sectionShown;
+    });
+    if (countEl) countEl.textContent = "现在显示 " + shown + " 句";
+    if (empty) empty.hidden = shown !== 0;
+  }
+
+  if (groups.length) {
+    if (search) {
+      search.addEventListener("input", applyPhraseFilter);
+    }
+    filterButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        activeFilter = btn.getAttribute("data-filter") || "all";
+        filterButtons.forEach(function (other) {
+          other.setAttribute("aria-pressed", other === btn ? "true" : "false");
+        });
+        applyPhraseFilter();
+      });
+    });
+    applyPhraseFilter();
+    Array.prototype.forEach.call(document.querySelectorAll('a[href="#urgent"]'), function (link) {
+      link.addEventListener("click", function () {
+        activeFilter = "all";
+        if (search) search.value = "";
+        filterButtons.forEach(function (other) {
+          other.setAttribute("aria-pressed", other.getAttribute("data-filter") === "all" ? "true" : "false");
+        });
+        applyPhraseFilter();
+      });
+    });
+  }
+
   if (copyBtn && textEl) {
     copyBtn.addEventListener("click", function () {
       var value = textEl.textContent || "";
