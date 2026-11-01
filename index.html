@@ -45,49 +45,27 @@ try {
   </nav>
 </header>
 <main id="main" class="page">
-  <div class="wrap">
+  <div class="wrap wrap-wide">
     <section class="card hero">
+      <p class="eyebrow">给听障、聋人和重听患者</p>
       <h1>用文字看懂入院</h1>
-      <p class="lead">给听障、聋人和重听患者的入院与住院指引。陪同办理的护士也可以用来做文字引导。</p>
-      <p>全程使用文字、图示和可以出示的卡片。不需要听声音，也可以不说话。不用注册，打开就能用。</p>
-      <div class="cta-list">
-        <a class="cta cta-primary" href="guide.html">
-          <span class="icon-bubble" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14h28v20H10z"/><path d="M16 22h16M16 28h10"/></svg>
-          </span>
-          <span class="cta-text">
-            <span class="cta-title">开始入院指引</span>
-            <span class="cta-desc">挂号、分诊、检查、办理住院、病区须知</span>
-          </span>
-          <span class="cta-go">进入</span>
-        </a>
-        <a class="cta" href="phrases.html">
-          <span class="icon-bubble" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="10" width="32" height="22" rx="3"/><path d="M14 18h20M14 24h12"/><path d="M16 32l6-4h8"/></svg>
-          </span>
-          <span class="cta-text">
-            <span class="cta-title">沟通求助</span>
-            <span class="cta-desc">把句子出示给医生和护士，可以不说话</span>
-          </span>
-          <span class="cta-go">进入</span>
-        </a>
-        <a class="cta" href="care.html">
-          <span class="icon-bubble" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 40s-13-8-13-17a8 8 0 0 1 13-5 8 8 0 0 1 13 5c0 9-13 17-13 17z"/></svg>
-          </span>
-          <span class="cta-text">
-            <span class="cta-title">住院须知</span>
-            <span class="cta-desc">关爱护理：用药、呼叫铃、吃饭、探视</span>
-          </span>
-          <span class="cta-go">进入</span>
-        </a>
+      <p class="lead">陪同办理的护士也可以把屏幕转给你，用文字一起办。不需要听声音，也可以不说话。</p>
+      <div class="intro-actions">
+        <a class="btn btn-primary" href="guide.html">开始入院指引</a>
+        <a class="btn" href="phrases.html">先看沟通卡片</a>
       </div>
+      <ul class="fact-row">
+        <li class="fact"><strong>五步都是文字</strong>挂号、分诊、检查、办理住院、病区。</li>
+        <li class="fact"><strong>不用听声音</strong>叫号看屏幕。交代请对方写下来。</li>
+        <li class="fact"><strong>不用注册</strong>打开就能用。你写的字不会上传。</li>
+      </ul>
     </section>
 
     <section class="card" aria-labelledby="path-title">
+      <p class="eyebrow">按顺序走</p>
       <h2 id="path-title">入院一共五步</h2>
       <p>可以按顺序看，也可以先点开你现在正在做的那一步。</p>
-      <ol class="roadmap" role="list">
+      <ol class="roadmap roadmap-steps" role="list">
         <li role="listitem"><a href="guide.html#step-1"><span class="num" aria-hidden="true">1</span>挂号</a></li>
         <li role="listitem"><a href="guide.html#step-2"><span class="num" aria-hidden="true">2</span>分诊</a></li>
         <li role="listitem"><a href="guide.html#step-3"><span class="num" aria-hidden="true">3</span>检查</a></li>
@@ -96,10 +74,110 @@ try {
       </ol>
     </section>
 
+    <section class="card" aria-labelledby="where-title">
+      <p class="eyebrow">我现在在这里</p>
+      <h2 id="where-title">按窗口进入</h2>
+      <p>站在哪个窗口，就点哪一张。每张都会打开同一步文字说明。</p>
+      <ul class="service-grid">
+        <li>
+          <a class="service-card" href="guide.html#step-1">
+            <span class="service-kicker">第 1 步</span>
+            <span class="service-title">挂号窗口</span>
+            <span class="service-desc">带身份证。有医保卡和旧病历也带上。</span>
+          </a>
+        </li>
+        <li>
+          <a class="service-card" href="guide.html#step-2">
+            <span class="service-kicker">第 2 步</span>
+            <span class="service-title">分诊台</span>
+            <span class="service-desc">把挂号单递过去。叫号看屏幕，不等广播。</span>
+          </a>
+        </li>
+        <li>
+          <a class="service-card" href="guide.html#step-3">
+            <span class="service-kicker">第 3 步</span>
+            <span class="service-title">检查</span>
+            <span class="service-desc">抽血、拍片、心电图。看不懂先让对方写。</span>
+          </a>
+        </li>
+        <li>
+          <a class="service-card" href="guide.html#step-4">
+            <span class="service-kicker">第 4 步</span>
+            <span class="service-title">住院处</span>
+            <span class="service-desc">核对名字、联系人、过敏和床号。金额请写下来。</span>
+          </a>
+        </li>
+        <li>
+          <a class="service-card" href="guide.html#step-5">
+            <span class="service-kicker">第 5 步</span>
+            <span class="service-title">病区护士站</span>
+            <span class="service-desc">确认床位、呼叫铃、卫生间和今天的时间。</span>
+          </a>
+        </li>
+        <li>
+          <a class="service-card" href="care.html#medicine">
+            <span class="service-kicker">住下以后</span>
+            <span class="service-title">用药核对</span>
+            <span class="service-desc">吃药前，看药袋上的名字是不是你的。</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="dept-title">
+      <p class="eyebrow">先选科室</p>
+      <h2 id="dept-title">去哪个科室，都是这五步</h2>
+      <p>点一个科室，入院指引会写上你要去的分诊台。各医院的名字可能不一样，以你挂号单上的字为准。</p>
+      <ul class="service-grid">
+        <li>
+          <a class="service-card" href="guide.html?dept=neike#step-1">
+            <span class="service-kicker">科室</span>
+            <span class="service-title">内科</span>
+            <span class="service-desc">挂号后到内科分诊台，看叫号屏幕。</span>
+          </a>
+        </li>
+        <li>
+          <a class="service-card" href="guide.html?dept=waike#step-1">
+            <span class="service-kicker">科室</span>
+            <span class="service-title">外科</span>
+            <span class="service-desc">挂号后到外科分诊台，看叫号屏幕。</span>
+          </a>
+        </li>
+        <li>
+          <a class="service-card" href="guide.html?dept=erke#step-1">
+            <span class="service-kicker">科室</span>
+            <span class="service-title">儿科</span>
+            <span class="service-desc">带孩子也走这五步。下一步请对方写下来。</span>
+          </a>
+        </li>
+        <li>
+          <a class="service-card" href="guide.html?dept=guke#step-1">
+            <span class="service-kicker">科室</span>
+            <span class="service-title">骨科</span>
+            <span class="service-desc">行动不便时，请工作人员带你去分诊台。</span>
+          </a>
+        </li>
+        <li>
+          <a class="service-card" href="guide.html?dept=jizhen#step-1">
+            <span class="service-kicker">科室</span>
+            <span class="service-title">急诊</span>
+            <span class="service-desc">先看屏幕和文字。需要马上帮助时，出示紧急卡片。</span>
+          </a>
+        </li>
+        <li>
+          <a class="service-card" href="care.html">
+            <span class="service-kicker">住下以后</span>
+            <span class="service-title">住院须知</span>
+            <span class="service-desc">用药、呼叫铃、吃饭、探视。都是文字。</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
     <section class="card" aria-labelledby="how-title">
       <h2 id="how-title">怎么用</h2>
       <ol class="steps-ol">
-        <li>打开「开始入院指引」。</li>
+        <li>点「开始入院指引」，或先点你所在的窗口。</li>
         <li>看完一步，点「我看懂了」，再进入下一步。</li>
         <li>需要和医护沟通时，打开「沟通求助」，把卡片出示给对方。</li>
         <li>住下以后，打开「住院须知」。</li>
@@ -117,6 +195,15 @@ try {
         <li>换班时告诉下一班：请用文字和这位患者沟通。</li>
       </ul>
     </section>
+
+    <aside class="help-strip" aria-labelledby="help-title">
+      <h2 id="help-title">需要帮忙</h2>
+      <p>看不懂就停下来，请对方写下来。不用打电话，把卡片举起来就行。</p>
+      <div class="help-actions">
+        <a class="btn btn-urgent" href="phrases.html#urgent">出示紧急卡片</a>
+        <a class="btn" href="phrases.html">打开沟通求助</a>
+      </div>
+    </aside>
 
     <section class="card" aria-labelledby="sign-title">
       <h2 id="sign-title">手语指引 <span class="pill">即将推出</span></h2>

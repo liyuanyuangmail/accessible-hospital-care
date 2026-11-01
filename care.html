@@ -46,16 +46,56 @@ try {
 </header>
 <main id="main" class="page">
   <div class="wrap">
-    <h1>住院须知</h1>
-    <p class="lead">关爱护理要点：用药、呼叫护士、用餐、探视。下面都是文字，不需要听声音。</p>
-    <p>时间是常见安排，各病区不一样。请以护士站和墙上的说明为准。</p>
-    <nav class="toc" aria-label="本页章节">
-      <a href="#medicine">用药</a>
-      <a href="#call">呼叫护士</a>
-      <a href="#meal">用餐</a>
-      <a href="#visit">探视</a>
-      <a href="#bedside">床头说明</a>
-    </nav>
+    <header class="page-intro">
+      <p class="eyebrow">住下以后 · 全程文字</p>
+      <h1>住院须知</h1>
+      <p class="lead">先点你要看的一件事：用药、呼叫护士、用餐、探视，或床头说明。</p>
+      <p>时间是常见安排，各病区不一样。请以护士站和墙上的说明为准。</p>
+    </header>
+    <ul class="service-grid" aria-label="本页章节">
+      <li>
+        <a class="service-card" href="#medicine">
+          <span class="service-kicker">先核对</span>
+          <span class="service-title">用药</span>
+          <span class="service-desc">药袋上的名字，要和腕带一致。</span>
+        </a>
+      </li>
+      <li>
+        <a class="service-card" href="#call">
+          <span class="service-kicker">不用出声</span>
+          <span class="service-title">呼叫护士</span>
+          <span class="service-desc">按一下床头按钮，再出示卡片。</span>
+        </a>
+      </li>
+      <li>
+        <a class="service-card" href="#meal">
+          <span class="service-kicker">看时间表</span>
+          <span class="service-title">用餐</span>
+          <span class="service-desc">吃饭时间以本病区墙上的字为准。</span>
+        </a>
+      </li>
+      <li>
+        <a class="service-card" href="#visit">
+          <span class="service-kicker">请对方写</span>
+          <span class="service-title">探视</span>
+          <span class="service-desc">请探视的人把医生的话写下来。</span>
+        </a>
+      </li>
+      <li>
+        <a class="service-card" href="#bedside">
+          <span class="service-kicker">给每一班看</span>
+          <span class="service-title">床头说明</span>
+          <span class="service-desc">我听不见。请用文字和我沟通。</span>
+        </a>
+      </li>
+      <li>
+        <a class="service-card" href="guide.html#step-5">
+          <span class="service-kicker">刚到病区</span>
+          <span class="service-title">回到入院第 5 步</span>
+          <span class="service-desc">床号、呼叫铃、卫生间、今天的时间。</span>
+        </a>
+      </li>
+    </ul>
 
     <section class="topic" id="medicine" aria-labelledby="medicine-title">
       <div class="topic-head">
@@ -64,12 +104,13 @@ try {
         </span>
         <h2 id="medicine-title">用药</h2>
       </div>
-      <ul class="plain-list">
-        <li>吃药前，看药袋上的名字是不是你的。再看腕带上的名字。</li>
-        <li>饭前还是饭后，以药袋上的字，或护士写给你的字为准。</li>
-        <li>自己带的药，先给护士看。不要自己偷偷吃。</li>
-        <li>吃完不舒服，按呼叫铃，并出示卡片，例如「我现在很疼。」</li>
-      </ul>
+      <p>吃药前，先看这三件事。对不上，先不要吃，按呼叫铃。</p>
+      <ol class="confirm-list">
+        <li><span class="num" aria-hidden="true">1</span><span><strong>名字。</strong>药袋上的名字，和腕带上的名字，是不是你。</span></li>
+        <li><span class="num" aria-hidden="true">2</span><span><strong>怎么吃。</strong>饭前还是饭后，以药袋上的字，或护士写给你的字为准。</span></li>
+        <li><span class="num" aria-hidden="true">3</span><span><strong>自己的药。</strong>先给护士看。不要自己偷偷吃。</span></li>
+      </ol>
+      <p>吃完不舒服，按呼叫铃，并出示卡片，例如「我现在很疼。」</p>
       <p><a href="phrases.html">去沟通求助，出示核对药物的卡片</a></p>
     </section>
 
@@ -138,6 +179,14 @@ try {
       <button type="button" class="btn btn-primary" data-show>出示这段说明</button>
     </section>
 
+    <aside class="help-strip" aria-labelledby="care-help-title">
+      <h2 id="care-help-title">需要帮忙</h2>
+      <p>夜里也一样。按呼叫铃，护士来了以后，请对方写下来。</p>
+      <div class="help-actions">
+        <a class="btn btn-urgent" href="phrases.html#urgent">出示紧急卡片</a>
+        <a class="btn" href="phrases.html">打开沟通求助</a>
+      </div>
+    </aside>
     <p class="note">入院那天，护士会和你一起确认床位、呼叫铃和当天安排。你可以用自己的速度看。没有听清，不是你的错。</p>
   </div>
 </main>
